@@ -54,6 +54,7 @@
             this.listBox_DevicesDiscoverd.FormattingEnabled = true;
             this.listBox_DevicesDiscoverd.Location = new System.Drawing.Point(9, 66);
             this.listBox_DevicesDiscoverd.Name = "listBox_DevicesDiscoverd";
+            this.listBox_DevicesDiscoverd.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBox_DevicesDiscoverd.Size = new System.Drawing.Size(585, 511);
             this.listBox_DevicesDiscoverd.TabIndex = 1;
             this.listBox_DevicesDiscoverd.SelectedIndexChanged += new System.EventHandler(this.listBox_DevicesDiscoverd_SelectedIndexChanged);
@@ -67,6 +68,7 @@
             this.btnConnect.TabIndex = 2;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // label1
             // 
@@ -116,7 +118,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "FROST-Configurator";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

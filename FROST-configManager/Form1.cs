@@ -30,6 +30,9 @@ namespace FROST_configManager
                 autoDiscovery ad = new autoDiscovery();
                 listBox_DevicesDiscoverd.DataSource = ad.getAllFROSTDevices(30,50,loginF.username,loginF.password);
             }
+
+            if (listBox_DevicesDiscoverd.Items.Count <= 0)
+                MessageBox.Show("No FROST devices could be discovered. Is the given username or password correct?");
         }
 
         //event when index of listbox changes, enables btnConnect:
@@ -48,6 +51,19 @@ namespace FROST_configManager
                 btnConnect.Enabled = true;
             else
                 btnConnect.Enabled = false;
+        }
+
+        //open new form and send list with selected items from listbox:
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            //get selected listboxitems to list, or use advanced mode:
+            List<string> listboxSelection = listBox_DevicesDiscoverd.SelectedItems.OfType<string>().ToList();
+            if (listboxSelection.Count <= 0) //advanced mode:
+                listboxSelection.Add(txtManualConnectionIP.Text);
+
+            //open new form, using listobxselection as argument:
+            configManagerForm cmf = new configManagerForm(listboxSelection);
+            cmf.ShowDialog();
         }
     }
 }
