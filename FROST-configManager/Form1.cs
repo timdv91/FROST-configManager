@@ -11,6 +11,9 @@ namespace FROST_configManager
 {
     public partial class Form1 : Form
     {
+        //declarating this public makes login credentials publicly available :).
+        loginForm loginF = new loginForm();
+
         public Form1()
         {
             InitializeComponent();
@@ -20,7 +23,6 @@ namespace FROST_configManager
         private void btnSendDiscoveryPing_Click(object sender, EventArgs e)
         {
             //Show login form:
-            loginForm loginF = new loginForm();
             var result = loginF.ShowDialog();
 
             //if login form has been submited, continue:
@@ -61,9 +63,14 @@ namespace FROST_configManager
             if (listboxSelection.Count <= 0) //advanced mode:
                 listboxSelection.Add(txtManualConnectionIP.Text);
 
-            //open new form, using listobxselection as argument:
-            configManagerForm cmf = new configManagerForm(listboxSelection);
-            cmf.ShowDialog();
+            //Ask for login credentials:
+            var result = loginF.ShowDialog(); //show login form.
+            if (result == DialogResult.OK) //if login form returns dialogresult.ok continue...
+            {
+                //open new form, using listboxselection as argument:
+                configManagerForm cmf = new configManagerForm(listboxSelection, loginF.username, loginF.password);
+                cmf.ShowDialog();
+            }
         }
     }
 }

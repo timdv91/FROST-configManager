@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SCPconnectionManager.cs" />
     <EmbeddedResource Include="configManagerForm.resx">
       <DependentUpon>configManagerForm.cs</DependentUpon>
     </EmbeddedResource>
