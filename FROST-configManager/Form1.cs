@@ -16,5 +16,11 @@ namespace FROST_configManager
         {
             InitializeComponent();
         }
+
+        private void btnSendDiscoveryPing_Click(object sender, EventArgs e)
+        {
+            autoDiscovery ad = new autoDiscovery();
+            listBox_DevicesDiscoverd.DataSource = ad.getAllFROSTDevices(70);
+        }
     }
 }
