@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FROST_configManager
@@ -20,9 +19,17 @@ namespace FROST_configManager
         //Starts a discovery for devices on local network:
         private void btnSendDiscoveryPing_Click(object sender, EventArgs e)
         {
-            autoDiscovery ad = new autoDiscovery();
-            listBox_DevicesDiscoverd.DataSource = ad.getAllFROSTDevices(70);
-            
+            //Show login form:
+            loginForm loginF = new loginForm();
+            var result = loginF.ShowDialog();
+
+            //if login form has been submited, continue:
+            if (result == DialogResult.OK)
+            {
+                //Start autodiscovery using ping, and downloading filename config from devices where possible:
+                autoDiscovery ad = new autoDiscovery();
+                listBox_DevicesDiscoverd.DataSource = ad.getAllFROSTDevices(30,50,loginF.username,loginF.password);
+            }
         }
 
         //event when index of listbox changes, enables btnConnect:
