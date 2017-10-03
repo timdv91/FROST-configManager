@@ -43,5 +43,46 @@ namespace FROST_configManager
             s.Close();
             Console.WriteLine("Connection closed with device on " + so.HostName.ToString());
         }
+
+        //Load device information:
+        public string getDeviceInformation()
+        {
+            CommandExecutionResult strOut = s.ExecuteCommand("cat /home/FROST/FROST_DeviceInfo.inf");
+            Console.WriteLine(strOut.Output.ToString());
+            return strOut.Output.ToString();
+        }
+
+
+        //Load device name:
+        public string getDeviceName()
+        {
+            CommandExecutionResult strOut = s.ExecuteCommand("cat /home/FROST/FROST_DeviceName.conf");
+            Console.WriteLine(strOut.Output.ToString());
+            return strOut.Output.ToString();
+        }
+
+        //Save device name:
+        public bool setDeviceName(string _deviceName)
+        {
+            CommandExecutionResult strOut = s.ExecuteCommand("echo \"" + _deviceName + "\" > /home/FROST/FROST_DeviceName.conf");
+            Console.WriteLine(strOut.IsSuccess.ToString());
+            return strOut.IsSuccess;
+        }
+
+        //Load device measure inteval:
+        public string getMeasureInterval()
+        {
+            CommandExecutionResult strOut = s.ExecuteCommand("cat /home/FROST/FROST_MeasureInterval.conf");
+            Console.WriteLine(strOut.Output.ToString());
+            return strOut.Output.ToString();
+        }
+
+        //Save device measurement interval:
+        public bool setMeasureInterval(string _measureInterval)
+        {
+            CommandExecutionResult strOut = s.ExecuteCommand("echo \"" + _measureInterval + "\" > /home/FROST/FROST_MeasureInterval.conf");
+            Console.WriteLine(strOut.IsSuccess.ToString());
+            return strOut.IsSuccess;
+        }
     }
 }
