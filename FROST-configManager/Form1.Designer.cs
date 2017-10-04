@@ -55,14 +55,14 @@
             this.listBox_DevicesDiscoverd.Location = new System.Drawing.Point(9, 66);
             this.listBox_DevicesDiscoverd.Name = "listBox_DevicesDiscoverd";
             this.listBox_DevicesDiscoverd.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox_DevicesDiscoverd.Size = new System.Drawing.Size(585, 511);
+            this.listBox_DevicesDiscoverd.Size = new System.Drawing.Size(385, 277);
             this.listBox_DevicesDiscoverd.TabIndex = 1;
             this.listBox_DevicesDiscoverd.SelectedIndexChanged += new System.EventHandler(this.listBox_DevicesDiscoverd_SelectedIndexChanged);
             // 
             // btnConnect
             // 
             this.btnConnect.Enabled = false;
-            this.btnConnect.Location = new System.Drawing.Point(400, 19);
+            this.btnConnect.Location = new System.Drawing.Point(203, 19);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(191, 41);
             this.btnConnect.TabIndex = 2;
@@ -83,7 +83,7 @@
             // 
             this.txtManualConnectionIP.Location = new System.Drawing.Point(9, 45);
             this.txtManualConnectionIP.Name = "txtManualConnectionIP";
-            this.txtManualConnectionIP.Size = new System.Drawing.Size(585, 20);
+            this.txtManualConnectionIP.Size = new System.Drawing.Size(385, 20);
             this.txtManualConnectionIP.TabIndex = 4;
             this.txtManualConnectionIP.TextChanged += new System.EventHandler(this.txtManualConnectionIP_TextChanged);
             // 
@@ -94,7 +94,7 @@
             this.groupBox1.Controls.Add(this.btnConnect);
             this.groupBox1.Location = new System.Drawing.Point(13, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(605, 596);
+            this.groupBox1.Size = new System.Drawing.Size(404, 353);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Auto discovery:";
@@ -103,9 +103,9 @@
             // 
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtManualConnectionIP);
-            this.groupBox2.Location = new System.Drawing.Point(13, 614);
+            this.groupBox2.Location = new System.Drawing.Point(13, 371);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(605, 82);
+            this.groupBox2.Size = new System.Drawing.Size(404, 82);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Manual connection (Advanced users only!):";
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(631, 706);
+            this.ClientSize = new System.Drawing.Size(429, 460);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";

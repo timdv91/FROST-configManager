@@ -22,8 +22,16 @@ namespace FROST_configManager
                 if (pr.Address != null) //if ping was successfull try to identify if device is FROST.
                 {
                     string FROSTdeviceName = discoverDeviceCompatibility(pr.Address.ToString(), _username, _password); //Using SCP to connect to the device.
-                    if(FROSTdeviceName != "<__FALSE__>") //if returned frostname = "false" then ignore it.
-                        FrostDeviceList.Add(FROSTdeviceName + "@" + pr.Address.ToString()); //add valid device to returnList.
+                    //If wrong WinSCP version is installed:
+                    if (FROSTdeviceName == "< __VERSION ERROR: Need WinSCP v5.11.1.0__ >")
+                    {
+                        Console.WriteLine("returning WinSCP version error.");
+                        FrostDeviceList.Add(FROSTdeviceName);
+                        return FrostDeviceList;
+                    }
+                    //if other error occuers:
+                    if (FROSTdeviceName != "<__FALSE__>") //if returned frostname = "false" then ignore it.
+                        FrostDeviceList.Add(FROSTdeviceName + "@" + pr.Address.ToString()); //add valid device to returnList.                
                 }
             }
             return FrostDeviceList; //return the returnList.
@@ -76,6 +84,11 @@ namespace FROST_configManager
             {
                 Console.WriteLine("Device on " + _IP + " is not a FROST device!");
                 return "<__FALSE__>";
+            }
+            catch(WinSCP.SessionLocalException)
+            {
+                Console.WriteLine("Connection failed. Possible wrong WinSCP version installed?");
+                return "<__VERSION ERROR: Need WinSCP v5.11.1.0__>";
             }
         }
     }

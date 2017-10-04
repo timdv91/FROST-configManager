@@ -35,6 +35,11 @@ namespace FROST_configManager
                 Console.WriteLine("Connection failed. Possible wrong login credentials?");
                 return false;
             }
+            catch (WinSCP.SessionLocalException)
+            {
+                Console.WriteLine("Connection failed. Possible wrong WinSCP version installed?");
+                return false;
+            }
         }
 
         //Close connection to device:
