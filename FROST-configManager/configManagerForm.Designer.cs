@@ -94,9 +94,9 @@
             // 
             // txtMeasurmentInterval
             // 
-            this.txtMeasurmentInterval.Location = new System.Drawing.Point(521, 67);
+            this.txtMeasurmentInterval.Location = new System.Drawing.Point(525, 67);
             this.txtMeasurmentInterval.Name = "txtMeasurmentInterval";
-            this.txtMeasurmentInterval.Size = new System.Drawing.Size(71, 20);
+            this.txtMeasurmentInterval.Size = new System.Drawing.Size(157, 20);
             this.txtMeasurmentInterval.TabIndex = 6;
             // 
             // label3
