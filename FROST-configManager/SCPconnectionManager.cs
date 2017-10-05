@@ -89,5 +89,13 @@ namespace FROST_configManager
             Console.WriteLine(strOut.IsSuccess.ToString());
             return strOut.IsSuccess;
         }
+
+        //Save user new login password:
+        public bool setCurrentUserNewPassword(string userName, string strOldPassword, string strNewPassword)
+        {
+            CommandExecutionResult strOut = s.ExecuteCommand("echo -e \"" + strOldPassword + "\n" + strNewPassword + "\n" + strNewPassword +"\" | passwd " + userName);
+            Console.WriteLine(strOut.IsSuccess.ToString());
+            return strOut.IsSuccess;
+        }
     }
 }
