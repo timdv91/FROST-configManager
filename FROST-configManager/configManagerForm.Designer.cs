@@ -49,6 +49,10 @@
             this.txtCurrentPassword = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.tabNetworking = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtIPAdress = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,6 +61,8 @@
             this.tabGeneral.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabNetworking.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
@@ -151,6 +157,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabGeneral);
             this.tabControl1.Controls.Add(this.tabUsers);
+            this.tabControl1.Controls.Add(this.tabNetworking);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -269,6 +276,44 @@
             this.txtUsername.Size = new System.Drawing.Size(158, 20);
             this.txtUsername.TabIndex = 7;
             // 
+            // tabNetworking
+            // 
+            this.tabNetworking.Controls.Add(this.groupBox2);
+            this.tabNetworking.Location = new System.Drawing.Point(4, 22);
+            this.tabNetworking.Name = "tabNetworking";
+            this.tabNetworking.Padding = new System.Windows.Forms.Padding(3);
+            this.tabNetworking.Size = new System.Drawing.Size(623, 511);
+            this.tabNetworking.TabIndex = 2;
+            this.tabNetworking.Text = "Networking";
+            this.tabNetworking.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtIPAdress);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(472, 212);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Network settings:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 29);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Ip-adress:";
+            // 
+            // txtIPAdress
+            // 
+            this.txtIPAdress.Location = new System.Drawing.Point(65, 26);
+            this.txtIPAdress.Name = "txtIPAdress";
+            this.txtIPAdress.Size = new System.Drawing.Size(245, 20);
+            this.txtIPAdress.TabIndex = 1;
+            // 
             // configManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,6 +334,9 @@
             this.tabUsers.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabNetworking.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -316,5 +364,9 @@
         private System.Windows.Forms.TextBox txtCurrentPassword;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TabPage tabNetworking;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtIPAdress;
+        private System.Windows.Forms.Label label8;
     }
 }

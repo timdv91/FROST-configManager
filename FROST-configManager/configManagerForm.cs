@@ -61,7 +61,7 @@ namespace FROST_configManager
             }
         }
 
-        //Saves data to devices config files:
+        //Calls function to save data to devices config files:
         private void btnSave_Click(object sender, EventArgs e)
         {
             string strState = saveDataToDevices();
@@ -120,6 +120,7 @@ namespace FROST_configManager
             }
         }
 
+        //Saves data to devices config files:
         string saveDataToDevices()
         {
             bool blIsSuccess = true;
