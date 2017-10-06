@@ -14,10 +14,15 @@ namespace FROST_configManager
     {
         //create a list of SCPc connection managers, usefull for multiple connections @ once:
         List<SCPconnectionManager> SCPcList = new List<SCPconnectionManager>();
+        //user password var, global so we can use it wherever we need:
+        string userPassword;
 
         public configManagerForm(List<String> devicesToConnectTo, string _username, string _password)
         {
             InitializeComponent();
+
+            //set local var to global var:
+            userPassword = _password;
 
             //Open SCP connection to devices:
             foreach (string device in devicesToConnectTo)
@@ -106,6 +111,12 @@ namespace FROST_configManager
             //Set textbox containing username:
             txtUsername.Text = _username;
 
+            //Network settings, IP, Netmask, Gateway tab:
+            //========================================
+            string[] netSettings = SCPcList[0].getNetworkSettings();
+            txtIPAdress.Text = netSettings[2];
+            txtNetMask.Text = netSettings[3];
+            txtGateWay.Text = netSettings[4];
             //add here more configs to load...
 
 
@@ -116,6 +127,7 @@ namespace FROST_configManager
             if (blReadOnlyMode)
             {
                 txtDeviceName.Enabled = false;
+                groupBoxSetNetworkingSettings.Enabled = false;
                 //add here more readonlymode configs...
             }
         }
@@ -176,6 +188,17 @@ namespace FROST_configManager
             }catch(Exception)
             {
                 MessageBox.Show("Error while saving new password.");
+            }
+
+
+            //Save new network settings:
+            //======================================================================
+            try
+            {
+                SCPcList[0].setNetworkSettings(txtIPAdress.Text, txtNetMask.Text, txtGateWay.Text, userPassword);
+            }catch(Exception)
+            {
+                MessageBox.Show("Error while saving new network configuration.");
             }
 
             //add here more configs to save...

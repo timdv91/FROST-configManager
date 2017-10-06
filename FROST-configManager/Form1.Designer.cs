@@ -35,6 +35,7 @@
             this.txtManualConnectionIP = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -52,10 +53,10 @@
             // listBox_DevicesDiscoverd
             // 
             this.listBox_DevicesDiscoverd.FormattingEnabled = true;
-            this.listBox_DevicesDiscoverd.Location = new System.Drawing.Point(9, 66);
+            this.listBox_DevicesDiscoverd.Location = new System.Drawing.Point(9, 92);
             this.listBox_DevicesDiscoverd.Name = "listBox_DevicesDiscoverd";
             this.listBox_DevicesDiscoverd.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox_DevicesDiscoverd.Size = new System.Drawing.Size(385, 277);
+            this.listBox_DevicesDiscoverd.Size = new System.Drawing.Size(385, 251);
             this.listBox_DevicesDiscoverd.TabIndex = 1;
             this.listBox_DevicesDiscoverd.SelectedIndexChanged += new System.EventHandler(this.listBox_DevicesDiscoverd_SelectedIndexChanged);
             // 
@@ -89,6 +90,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.progressBar1);
             this.groupBox1.Controls.Add(this.btnSendDiscoveryPing);
             this.groupBox1.Controls.Add(this.listBox_DevicesDiscoverd);
             this.groupBox1.Controls.Add(this.btnConnect);
@@ -109,6 +111,13 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Manual connection (Advanced users only!):";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(9, 63);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(385, 23);
+            this.progressBar1.TabIndex = 3;
             // 
             // Form1
             // 
@@ -135,6 +144,7 @@
         private System.Windows.Forms.TextBox txtManualConnectionIP;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

@@ -97,5 +97,44 @@ namespace FROST_configManager
             Console.WriteLine(strOut.IsSuccess.ToString());
             return strOut.IsSuccess;
         }
+
+        //Load network settings:
+        public string[] getNetworkSettings()
+        {
+            string[] netSettings = new string[5];
+
+            CommandExecutionResult strOut = s.ExecuteCommand("cat /home/FROST/FROST_NetworkSettings.conf");
+            Console.WriteLine(strOut.Output.ToString());
+
+            netSettings = strOut.Output.ToString().Split('\n'); //split this file on each line of data.
+
+            for (int I = 2; I < netSettings.Count(); I++) //skip the first 2 lines. Don't need them.
+            {
+                Console.WriteLine("line var : " + netSettings[I]);
+                netSettings[I] = netSettings[I].Split(' ')[3];  //Get the 3th word based on spaces.
+                Console.WriteLine("netsettings[I]" + netSettings[I]);
+            }
+
+            return netSettings;
+        }
+
+        //Save network settings:
+        public bool setNetworkSettings(string _IP, string _NM, string _GW, string _Password)
+        {
+            //Save data to the config file:
+            string netConfigFileData = "auto eth0\n\tiface eth0 inet static\n\t\taddress " + _IP + "\n\t\tnetmask " + _NM + "\n\t\tgateway " + _GW;
+            CommandExecutionResult strOut = s.ExecuteCommand("echo \"" + netConfigFileData + "\" > /home/FROST/FROST_NetworkSettings.conf");
+            Console.WriteLine(strOut.IsSuccess.ToString());
+
+            //if above code has error quit here and return false:
+            if (strOut.IsSuccess == false)
+                return false;
+
+            //if above code runs fine, copy the config file to the correct location:
+            //Copy config file to etc/network/interfaces:
+            strOut = s.ExecuteCommand("echo " + _Password + " | sudo -S cp /home/FROST/FROST_NetworkSettings.conf /etc/network/interfaces" );
+
+            return strOut.IsSuccess;
+        }
     }
 }

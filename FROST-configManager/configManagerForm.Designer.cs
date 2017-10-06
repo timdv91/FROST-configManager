@@ -41,18 +41,22 @@
             this.tabGeneral = new System.Windows.Forms.TabPage();
             this.tabUsers = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtCurrentPassword = new System.Windows.Forms.TextBox();
             this.txtSetNewPassword2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSetNewPassword1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCurrentPassword = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
             this.tabNetworking = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.groupBoxSetNetworkingSettings = new System.Windows.Forms.GroupBox();
             this.txtIPAdress = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtNetMask = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtGateWay = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,7 +66,7 @@
             this.tabUsers.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabNetworking.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxSetNetworkingSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
@@ -209,6 +213,39 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Set new password:";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "User:";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(131, 25);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(158, 20);
+            this.txtUsername.TabIndex = 7;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 58);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Current password:";
+            // 
+            // txtCurrentPassword
+            // 
+            this.txtCurrentPassword.Location = new System.Drawing.Point(131, 51);
+            this.txtCurrentPassword.Name = "txtCurrentPassword";
+            this.txtCurrentPassword.PasswordChar = '*';
+            this.txtCurrentPassword.Size = new System.Drawing.Size(158, 20);
+            this.txtCurrentPassword.TabIndex = 5;
+            // 
             // txtSetNewPassword2
             // 
             this.txtSetNewPassword2.Location = new System.Drawing.Point(131, 101);
@@ -243,42 +280,9 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Retype new password:";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 58);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Current password:";
-            // 
-            // txtCurrentPassword
-            // 
-            this.txtCurrentPassword.Location = new System.Drawing.Point(131, 51);
-            this.txtCurrentPassword.Name = "txtCurrentPassword";
-            this.txtCurrentPassword.PasswordChar = '*';
-            this.txtCurrentPassword.Size = new System.Drawing.Size(158, 20);
-            this.txtCurrentPassword.TabIndex = 5;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 32);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "User:";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(131, 25);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(158, 20);
-            this.txtUsername.TabIndex = 7;
-            // 
             // tabNetworking
             // 
-            this.tabNetworking.Controls.Add(this.groupBox2);
+            this.tabNetworking.Controls.Add(this.groupBoxSetNetworkingSettings);
             this.tabNetworking.Location = new System.Drawing.Point(4, 22);
             this.tabNetworking.Name = "tabNetworking";
             this.tabNetworking.Padding = new System.Windows.Forms.Padding(3);
@@ -287,16 +291,27 @@
             this.tabNetworking.Text = "Networking";
             this.tabNetworking.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // groupBoxSetNetworkingSettings
             // 
-            this.groupBox2.Controls.Add(this.txtIPAdress);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(472, 212);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Network settings:";
+            this.groupBoxSetNetworkingSettings.Controls.Add(this.txtGateWay);
+            this.groupBoxSetNetworkingSettings.Controls.Add(this.label10);
+            this.groupBoxSetNetworkingSettings.Controls.Add(this.txtNetMask);
+            this.groupBoxSetNetworkingSettings.Controls.Add(this.label9);
+            this.groupBoxSetNetworkingSettings.Controls.Add(this.txtIPAdress);
+            this.groupBoxSetNetworkingSettings.Controls.Add(this.label8);
+            this.groupBoxSetNetworkingSettings.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxSetNetworkingSettings.Name = "groupBoxSetNetworkingSettings";
+            this.groupBoxSetNetworkingSettings.Size = new System.Drawing.Size(472, 212);
+            this.groupBoxSetNetworkingSettings.TabIndex = 0;
+            this.groupBoxSetNetworkingSettings.TabStop = false;
+            this.groupBoxSetNetworkingSettings.Text = "Network settings:";
+            // 
+            // txtIPAdress
+            // 
+            this.txtIPAdress.Location = new System.Drawing.Point(65, 26);
+            this.txtIPAdress.Name = "txtIPAdress";
+            this.txtIPAdress.Size = new System.Drawing.Size(213, 20);
+            this.txtIPAdress.TabIndex = 1;
             // 
             // label8
             // 
@@ -307,12 +322,37 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Ip-adress:";
             // 
-            // txtIPAdress
+            // txtNetMask
             // 
-            this.txtIPAdress.Location = new System.Drawing.Point(65, 26);
-            this.txtIPAdress.Name = "txtIPAdress";
-            this.txtIPAdress.Size = new System.Drawing.Size(245, 20);
-            this.txtIPAdress.TabIndex = 1;
+            this.txtNetMask.Location = new System.Drawing.Point(65, 52);
+            this.txtNetMask.Name = "txtNetMask";
+            this.txtNetMask.Size = new System.Drawing.Size(213, 20);
+            this.txtNetMask.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 55);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Netmask:";
+            // 
+            // txtGateWay
+            // 
+            this.txtGateWay.Location = new System.Drawing.Point(65, 78);
+            this.txtGateWay.Name = "txtGateWay";
+            this.txtGateWay.Size = new System.Drawing.Size(213, 20);
+            this.txtGateWay.TabIndex = 5;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 81);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Gateway:";
             // 
             // configManagerForm
             // 
@@ -335,8 +375,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabNetworking.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxSetNetworkingSettings.ResumeLayout(false);
+            this.groupBoxSetNetworkingSettings.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -365,8 +405,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TabPage tabNetworking;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxSetNetworkingSettings;
         private System.Windows.Forms.TextBox txtIPAdress;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtGateWay;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtNetMask;
+        private System.Windows.Forms.Label label9;
     }
 }
