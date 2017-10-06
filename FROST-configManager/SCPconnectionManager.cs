@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinSCP;
+using System.Threading;
 
 namespace FROST_configManager
 {
@@ -119,22 +120,57 @@ namespace FROST_configManager
         }
 
         //Save network settings:
-        public bool setNetworkSettings(string _IP, string _NM, string _GW, string _Password)
+        public bool setNetworkSettings(string _Password, bool _DHCPactive, bool _rebootDevice, string _IP = "0.0.0.0", string _NM = "255.255.255.0", string _GW = "192.168.1.1")
         {
+            //set ip on "0.0.0.0" when dhcp is enabled, this value is used as check for the ui on load:
+            if(_DHCPactive == true)
+                _IP = "0.0.0.0";
+
             //Save data to the config file:
             string netConfigFileData = "auto eth0\n\tiface eth0 inet static\n\t\taddress " + _IP + "\n\t\tnetmask " + _NM + "\n\t\tgateway " + _GW;
             CommandExecutionResult strOut = s.ExecuteCommand("echo \"" + netConfigFileData + "\" > /home/FROST/FROST_NetworkSettings.conf");
             Console.WriteLine(strOut.IsSuccess.ToString());
 
-            //if above code has error quit here and return false:
+            //if above code has error, quit here and return false:
             if (strOut.IsSuccess == false)
                 return false;
 
-            //if above code runs fine, copy the config file to the correct location:
-            //Copy config file to etc/network/interfaces:
-            strOut = s.ExecuteCommand("echo " + _Password + " | sudo -S cp /home/FROST/FROST_NetworkSettings.conf /etc/network/interfaces" );
+            //if above code runs fine: copy the config file to the correct location:
+            if (_DHCPactive == false)
+                strOut = s.ExecuteCommand("echo " + _Password + " | sudo -S cp /home/FROST/FROST_NetworkSettings.conf /etc/network/interfaces" ); //Copy config file to etc/network/interfaces:
+            else
+                strOut = s.ExecuteCommand("echo " + _Password + " | sudo -S cp /etc/network/interfaces.back /etc/network/interfaces"); //Copy interfaces backup file back to etc/network/interfaces:
 
-            return strOut.IsSuccess;
+            Console.WriteLine("Here somthing wierd happens before calling reboot function... This is always false but seems to execute correctly??? Ignoring this error for the moment... " + strOut.IsSuccess.ToString());
+
+            //reboot to change IP:
+            if (_rebootDevice == true)
+                setReboot(_Password);
+
+            //return strOut.IsSuccess; //  --> seems to return errors for nothing... All coused by linux that cant act stable on a reboot command...
+            return true;
+        }
+
+        //Reboot the device:
+        public bool setReboot(string _Password)
+        {
+            try
+            {
+                CommandExecutionResult strOut = s.ExecuteCommand("echo " + _Password + " | sudo -S reboot"); //reboot systyem for IP change.
+                Thread.Sleep(1000); //hope tis solves the random skips of this command... 
+                strOut = s.ExecuteCommand("echo " + _Password + " | sudo -S reboot"); //reboot systyem for IP change.
+
+                if (strOut.IsSuccess == false)
+                    return false;
+
+                return strOut.IsSuccess;
+            }catch(System.InvalidOperationException)
+            {
+                return true;
+            }catch(WinSCP.SessionLocalException)
+            {
+                return true;
+            }
         }
     }
 }

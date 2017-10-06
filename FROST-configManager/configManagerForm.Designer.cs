@@ -57,6 +57,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtGateWay = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.comboBox_DHCPorSTATIC_IP = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel_NetworkSettingsInputs = new System.Windows.Forms.Panel();
+            this.checkBox_NetworkSettingsRebootDevice = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -67,6 +72,7 @@
             this.groupBox1.SuspendLayout();
             this.tabNetworking.SuspendLayout();
             this.groupBoxSetNetworkingSettings.SuspendLayout();
+            this.panel_NetworkSettingsInputs.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
@@ -293,22 +299,21 @@
             // 
             // groupBoxSetNetworkingSettings
             // 
-            this.groupBoxSetNetworkingSettings.Controls.Add(this.txtGateWay);
-            this.groupBoxSetNetworkingSettings.Controls.Add(this.label10);
-            this.groupBoxSetNetworkingSettings.Controls.Add(this.txtNetMask);
-            this.groupBoxSetNetworkingSettings.Controls.Add(this.label9);
-            this.groupBoxSetNetworkingSettings.Controls.Add(this.txtIPAdress);
-            this.groupBoxSetNetworkingSettings.Controls.Add(this.label8);
+            this.groupBoxSetNetworkingSettings.Controls.Add(this.checkBox_NetworkSettingsRebootDevice);
+            this.groupBoxSetNetworkingSettings.Controls.Add(this.panel_NetworkSettingsInputs);
+            this.groupBoxSetNetworkingSettings.Controls.Add(this.label12);
+            this.groupBoxSetNetworkingSettings.Controls.Add(this.label11);
+            this.groupBoxSetNetworkingSettings.Controls.Add(this.comboBox_DHCPorSTATIC_IP);
             this.groupBoxSetNetworkingSettings.Location = new System.Drawing.Point(6, 6);
             this.groupBoxSetNetworkingSettings.Name = "groupBoxSetNetworkingSettings";
-            this.groupBoxSetNetworkingSettings.Size = new System.Drawing.Size(472, 212);
+            this.groupBoxSetNetworkingSettings.Size = new System.Drawing.Size(319, 219);
             this.groupBoxSetNetworkingSettings.TabIndex = 0;
             this.groupBoxSetNetworkingSettings.TabStop = false;
             this.groupBoxSetNetworkingSettings.Text = "Network settings:";
             // 
             // txtIPAdress
             // 
-            this.txtIPAdress.Location = new System.Drawing.Point(65, 26);
+            this.txtIPAdress.Location = new System.Drawing.Point(73, 11);
             this.txtIPAdress.Name = "txtIPAdress";
             this.txtIPAdress.Size = new System.Drawing.Size(213, 20);
             this.txtIPAdress.TabIndex = 1;
@@ -316,7 +321,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 29);
+            this.label8.Location = new System.Drawing.Point(14, 14);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 13);
             this.label8.TabIndex = 0;
@@ -324,7 +329,7 @@
             // 
             // txtNetMask
             // 
-            this.txtNetMask.Location = new System.Drawing.Point(65, 52);
+            this.txtNetMask.Location = new System.Drawing.Point(73, 37);
             this.txtNetMask.Name = "txtNetMask";
             this.txtNetMask.Size = new System.Drawing.Size(213, 20);
             this.txtNetMask.TabIndex = 3;
@@ -332,7 +337,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 55);
+            this.label9.Location = new System.Drawing.Point(14, 40);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 2;
@@ -340,7 +345,7 @@
             // 
             // txtGateWay
             // 
-            this.txtGateWay.Location = new System.Drawing.Point(65, 78);
+            this.txtGateWay.Location = new System.Drawing.Point(73, 63);
             this.txtGateWay.Name = "txtGateWay";
             this.txtGateWay.Size = new System.Drawing.Size(213, 20);
             this.txtGateWay.TabIndex = 5;
@@ -348,11 +353,64 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 81);
+            this.label10.Location = new System.Drawing.Point(14, 66);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(52, 13);
             this.label10.TabIndex = 4;
             this.label10.Text = "Gateway:";
+            // 
+            // comboBox_DHCPorSTATIC_IP
+            // 
+            this.comboBox_DHCPorSTATIC_IP.FormattingEnabled = true;
+            this.comboBox_DHCPorSTATIC_IP.Items.AddRange(new object[] {
+            "Dynamic (DHCP)",
+            "Static"});
+            this.comboBox_DHCPorSTATIC_IP.Location = new System.Drawing.Point(94, 24);
+            this.comboBox_DHCPorSTATIC_IP.Name = "comboBox_DHCPorSTATIC_IP";
+            this.comboBox_DHCPorSTATIC_IP.Size = new System.Drawing.Size(184, 21);
+            this.comboBox_DHCPorSTATIC_IP.TabIndex = 6;
+            this.comboBox_DHCPorSTATIC_IP.SelectedIndexChanged += new System.EventHandler(this.comboBox_DHCPorSTATIC_IP_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 27);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 13);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Ip address type:";
+            // 
+            // panel_NetworkSettingsInputs
+            // 
+            this.panel_NetworkSettingsInputs.Controls.Add(this.label8);
+            this.panel_NetworkSettingsInputs.Controls.Add(this.txtIPAdress);
+            this.panel_NetworkSettingsInputs.Controls.Add(this.label9);
+            this.panel_NetworkSettingsInputs.Controls.Add(this.txtGateWay);
+            this.panel_NetworkSettingsInputs.Controls.Add(this.txtNetMask);
+            this.panel_NetworkSettingsInputs.Controls.Add(this.label10);
+            this.panel_NetworkSettingsInputs.Location = new System.Drawing.Point(6, 97);
+            this.panel_NetworkSettingsInputs.Name = "panel_NetworkSettingsInputs";
+            this.panel_NetworkSettingsInputs.Size = new System.Drawing.Size(303, 105);
+            this.panel_NetworkSettingsInputs.TabIndex = 8;
+            // 
+            // checkBox_NetworkSettingsRebootDevice
+            // 
+            this.checkBox_NetworkSettingsRebootDevice.AutoSize = true;
+            this.checkBox_NetworkSettingsRebootDevice.Location = new System.Drawing.Point(23, 64);
+            this.checkBox_NetworkSettingsRebootDevice.Name = "checkBox_NetworkSettingsRebootDevice";
+            this.checkBox_NetworkSettingsRebootDevice.Size = new System.Drawing.Size(205, 17);
+            this.checkBox_NetworkSettingsRebootDevice.TabIndex = 9;
+            this.checkBox_NetworkSettingsRebootDevice.Text = "Reboot the device after saving data? ";
+            this.checkBox_NetworkSettingsRebootDevice.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 48);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(241, 13);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Network configuration needs a reboot to activate:";
             // 
             // configManagerForm
             // 
@@ -377,6 +435,8 @@
             this.tabNetworking.ResumeLayout(false);
             this.groupBoxSetNetworkingSettings.ResumeLayout(false);
             this.groupBoxSetNetworkingSettings.PerformLayout();
+            this.panel_NetworkSettingsInputs.ResumeLayout(false);
+            this.panel_NetworkSettingsInputs.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -412,5 +472,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtNetMask;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBox_DHCPorSTATIC_IP;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel_NetworkSettingsInputs;
+        private System.Windows.Forms.CheckBox checkBox_NetworkSettingsRebootDevice;
+        private System.Windows.Forms.Label label12;
     }
 }

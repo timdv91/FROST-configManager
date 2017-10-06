@@ -82,7 +82,13 @@ namespace FROST_configManager
             this.Close();
         }
 
-
+        private void comboBox_DHCPorSTATIC_IP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox_DHCPorSTATIC_IP.SelectedIndex == 0)
+                panel_NetworkSettingsInputs.Visible = false;
+            else
+                panel_NetworkSettingsInputs.Visible = true;
+        }
 
         //=================================================================
         //=============Save and Load functions:============================
@@ -111,12 +117,23 @@ namespace FROST_configManager
             //Set textbox containing username:
             txtUsername.Text = _username;
 
-            //Network settings, IP, Netmask, Gateway tab:
-            //========================================
+         //Network settings, IP, Netmask, Gateway tab:
+         //========================================
             string[] netSettings = SCPcList[0].getNetworkSettings();
             txtIPAdress.Text = netSettings[2];
             txtNetMask.Text = netSettings[3];
             txtGateWay.Text = netSettings[4];
+
+            if (netSettings[2] == "0.0.0.0") //Hide panel with inputs when DHCP is used:
+            {
+                comboBox_DHCPorSTATIC_IP.SelectedIndex = 0;
+                panel_NetworkSettingsInputs.Visible = false;
+            }
+            else //show panel with inputs when Static is used:
+            {
+                comboBox_DHCPorSTATIC_IP.SelectedIndex = 1;
+                panel_NetworkSettingsInputs.Visible = true;
+            }
             //add here more configs to load...
 
 
@@ -191,19 +208,37 @@ namespace FROST_configManager
             }
 
 
-            //Save new network settings:
-            //======================================================================
-            try
-            {
-                SCPcList[0].setNetworkSettings(txtIPAdress.Text, txtNetMask.Text, txtGateWay.Text, userPassword);
-            }catch(Exception)
-            {
-                MessageBox.Show("Error while saving new network configuration.");
-            }
-
             //add here more configs to save...
             //======================================================================
 
+
+            //Save new network settings: (keep as last, when checkbox is checked REBOOT is initiated!!!)
+            //======================================================================
+            try
+            {
+                if (comboBox_DHCPorSTATIC_IP.SelectedIndex == 1)
+                    blIsSuccess = SCPcList[0].setNetworkSettings(userPassword, false, checkBox_NetworkSettingsRebootDevice.Checked, txtIPAdress.Text, txtNetMask.Text, txtGateWay.Text);
+                else
+                    blIsSuccess = SCPcList[0].setNetworkSettings(userPassword, true, checkBox_NetworkSettingsRebootDevice.Checked);
+
+                if (blIsSuccess == false && checkBox_NetworkSettingsRebootDevice.Checked == false)
+                    strErrorMsg += "ERROR saving network settings.\n";
+
+                if (checkBox_NetworkSettingsRebootDevice.Checked == true && strErrorMsg == "") //when no previous errors happend, add 'Save completed' on front.
+                    strErrorMsg = "Save completed. Device going down for reboot. Please reconnect on the new IP-address after reboot.";
+                else if (checkBox_NetworkSettingsRebootDevice.Checked == true && strErrorMsg != "") //When errors did happen show reboot message wiithout 'save completed' on front.
+                    strErrorMsg += "\nDevice going down for reboot. Please reconnect on the new IP-address after reboot.";
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Exception while saving new network configuration.");
+            }
+
+
+            //Close this 'Form' when reboot is active:
+            //======================================================================
+            if (checkBox_NetworkSettingsRebootDevice.Checked == true)
+                this.Close();            
             //return if there where errors:
             //======================================================================
             if (strErrorMsg != "")
@@ -211,5 +246,7 @@ namespace FROST_configManager
             else
                 return "Save completed.";
         }
+
+        
     }
 }
