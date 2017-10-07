@@ -90,6 +90,14 @@ namespace FROST_configManager
                 panel_NetworkSettingsInputs.Visible = true;
         }
 
+        private void checkBox_DisableMySQL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_DisableMySQL.Checked == false)
+                panel_MySqlServerSettingsInputs.Visible = true;
+            else
+                panel_MySqlServerSettingsInputs.Visible = false;
+        }
+
         //=================================================================
         //=============Save and Load functions:============================
         //=================================================================
@@ -117,6 +125,7 @@ namespace FROST_configManager
             //Set textbox containing username:
             txtUsername.Text = _username;
 
+
          //Network settings, IP, Netmask, Gateway tab:
          //========================================
             string[] netSettings = SCPcList[0].getNetworkSettings();
@@ -134,13 +143,27 @@ namespace FROST_configManager
                 comboBox_DHCPorSTATIC_IP.SelectedIndex = 1;
                 panel_NetworkSettingsInputs.Visible = true;
             }
+
+
+            //MySQL server settings:
+            //========================================
+            string[] MySQLConfiguration = SCPcList[0].getMySqlSettings();
             
-            
+            if (Convert.ToBoolean(MySQLConfiguration[0]) == true) //Remove input panel from UI when MySQL is disabled.
+                panel_MySqlServerSettingsInputs.Visible = false;
+
+            checkBox_DisableMySQL.Checked = Convert.ToBoolean(MySQLConfiguration[0]);
+            txtMySqlServerIP.Text = MySQLConfiguration[1];
+            txtMySqlServerUsername.Text = MySQLConfiguration[2];
+            txtMySqlServerPassword.Text = MySQLConfiguration[3];
+            txtMySqlServerDatabaseName.Text = MySQLConfiguration[4];
+            txtMySqlServerTableName.Text = MySQLConfiguration[5];
+
             //add here more configs to load...
 
 
-        //Read only mode disabled items:
-        //==============================
+            //Read only mode disabled items:
+            //==============================
 
             //disable UI components in readOnlyMode:
             if (blReadOnlyMode)
@@ -210,6 +233,20 @@ namespace FROST_configManager
             }
 
 
+            //Save MySQL new server configuration:
+            //======================================================================
+            try
+            {
+                foreach (SCPconnectionManager device in SCPcList)
+                    device.setMySqlSettings(checkBox_DisableMySQL.Checked, txtMySqlServerIP.Text, txtMySqlServerUsername.Text, txtMySqlServerPassword.Text, txtMySqlServerDatabaseName.Text, txtMySqlServerTableName.Text);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Exception while saving new MySQL server configuration.");
+            }
+
+
             //add here more configs to save...
             //======================================================================
 
@@ -249,7 +286,5 @@ namespace FROST_configManager
             else
                 return "Save completed.";
         }
-
-        
     }
 }

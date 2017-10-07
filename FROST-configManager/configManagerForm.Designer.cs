@@ -51,17 +51,31 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabNetworking = new System.Windows.Forms.TabPage();
             this.groupBoxSetNetworkingSettings = new System.Windows.Forms.GroupBox();
-            this.txtIPAdress = new System.Windows.Forms.TextBox();
+            this.checkBox_NetworkSettingsRebootDevice = new System.Windows.Forms.CheckBox();
+            this.panel_NetworkSettingsInputs = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtNetMask = new System.Windows.Forms.TextBox();
+            this.txtIPAdress = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtGateWay = new System.Windows.Forms.TextBox();
+            this.txtNetMask = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox_DHCPorSTATIC_IP = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.panel_NetworkSettingsInputs = new System.Windows.Forms.Panel();
-            this.checkBox_NetworkSettingsRebootDevice = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.comboBox_DHCPorSTATIC_IP = new System.Windows.Forms.ComboBox();
+            this.tabMySQL = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.groupBoxMySQLConfig = new System.Windows.Forms.GroupBox();
+            this.checkBox_DisableMySQL = new System.Windows.Forms.CheckBox();
+            this.panel_MySqlServerSettingsInputs = new System.Windows.Forms.Panel();
+            this.txtMySqlServerIP = new System.Windows.Forms.TextBox();
+            this.txtMySqlServerUsername = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtMySqlServerPassword = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtMySqlServerDatabaseName = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtMySqlServerTableName = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,6 +87,9 @@
             this.tabNetworking.SuspendLayout();
             this.groupBoxSetNetworkingSettings.SuspendLayout();
             this.panel_NetworkSettingsInputs.SuspendLayout();
+            this.tabMySQL.SuspendLayout();
+            this.groupBoxMySQLConfig.SuspendLayout();
+            this.panel_MySqlServerSettingsInputs.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
@@ -168,6 +185,7 @@
             this.tabControl1.Controls.Add(this.tabGeneral);
             this.tabControl1.Controls.Add(this.tabUsers);
             this.tabControl1.Controls.Add(this.tabNetworking);
+            this.tabControl1.Controls.Add(this.tabMySQL);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -311,12 +329,28 @@
             this.groupBoxSetNetworkingSettings.TabStop = false;
             this.groupBoxSetNetworkingSettings.Text = "Network settings:";
             // 
-            // txtIPAdress
+            // checkBox_NetworkSettingsRebootDevice
             // 
-            this.txtIPAdress.Location = new System.Drawing.Point(73, 11);
-            this.txtIPAdress.Name = "txtIPAdress";
-            this.txtIPAdress.Size = new System.Drawing.Size(213, 20);
-            this.txtIPAdress.TabIndex = 1;
+            this.checkBox_NetworkSettingsRebootDevice.AutoSize = true;
+            this.checkBox_NetworkSettingsRebootDevice.Location = new System.Drawing.Point(23, 64);
+            this.checkBox_NetworkSettingsRebootDevice.Name = "checkBox_NetworkSettingsRebootDevice";
+            this.checkBox_NetworkSettingsRebootDevice.Size = new System.Drawing.Size(205, 17);
+            this.checkBox_NetworkSettingsRebootDevice.TabIndex = 9;
+            this.checkBox_NetworkSettingsRebootDevice.Text = "Reboot the device after saving data? ";
+            this.checkBox_NetworkSettingsRebootDevice.UseVisualStyleBackColor = true;
+            // 
+            // panel_NetworkSettingsInputs
+            // 
+            this.panel_NetworkSettingsInputs.Controls.Add(this.label8);
+            this.panel_NetworkSettingsInputs.Controls.Add(this.txtIPAdress);
+            this.panel_NetworkSettingsInputs.Controls.Add(this.label9);
+            this.panel_NetworkSettingsInputs.Controls.Add(this.txtGateWay);
+            this.panel_NetworkSettingsInputs.Controls.Add(this.txtNetMask);
+            this.panel_NetworkSettingsInputs.Controls.Add(this.label10);
+            this.panel_NetworkSettingsInputs.Location = new System.Drawing.Point(6, 97);
+            this.panel_NetworkSettingsInputs.Name = "panel_NetworkSettingsInputs";
+            this.panel_NetworkSettingsInputs.Size = new System.Drawing.Size(303, 105);
+            this.panel_NetworkSettingsInputs.TabIndex = 8;
             // 
             // label8
             // 
@@ -327,12 +361,12 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Ip-adress:";
             // 
-            // txtNetMask
+            // txtIPAdress
             // 
-            this.txtNetMask.Location = new System.Drawing.Point(73, 37);
-            this.txtNetMask.Name = "txtNetMask";
-            this.txtNetMask.Size = new System.Drawing.Size(213, 20);
-            this.txtNetMask.TabIndex = 3;
+            this.txtIPAdress.Location = new System.Drawing.Point(73, 11);
+            this.txtIPAdress.Name = "txtIPAdress";
+            this.txtIPAdress.Size = new System.Drawing.Size(213, 20);
+            this.txtIPAdress.TabIndex = 1;
             // 
             // label9
             // 
@@ -350,6 +384,13 @@
             this.txtGateWay.Size = new System.Drawing.Size(213, 20);
             this.txtGateWay.TabIndex = 5;
             // 
+            // txtNetMask
+            // 
+            this.txtNetMask.Location = new System.Drawing.Point(73, 37);
+            this.txtNetMask.Name = "txtNetMask";
+            this.txtNetMask.Size = new System.Drawing.Size(213, 20);
+            this.txtNetMask.TabIndex = 3;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -358,6 +399,24 @@
             this.label10.Size = new System.Drawing.Size(52, 13);
             this.label10.TabIndex = 4;
             this.label10.Text = "Gateway:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 48);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(241, 13);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Network configuration needs a reboot to activate:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 27);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 13);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Ip address type:";
             // 
             // comboBox_DHCPorSTATIC_IP
             // 
@@ -371,46 +430,134 @@
             this.comboBox_DHCPorSTATIC_IP.TabIndex = 6;
             this.comboBox_DHCPorSTATIC_IP.SelectedIndexChanged += new System.EventHandler(this.comboBox_DHCPorSTATIC_IP_SelectedIndexChanged);
             // 
-            // label11
+            // tabMySQL
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 27);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 13);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "Ip address type:";
+            this.tabMySQL.Controls.Add(this.groupBoxMySQLConfig);
+            this.tabMySQL.Location = new System.Drawing.Point(4, 22);
+            this.tabMySQL.Name = "tabMySQL";
+            this.tabMySQL.Size = new System.Drawing.Size(623, 511);
+            this.tabMySQL.TabIndex = 3;
+            this.tabMySQL.Text = "Mysql";
+            this.tabMySQL.UseVisualStyleBackColor = true;
             // 
-            // panel_NetworkSettingsInputs
+            // label13
             // 
-            this.panel_NetworkSettingsInputs.Controls.Add(this.label8);
-            this.panel_NetworkSettingsInputs.Controls.Add(this.txtIPAdress);
-            this.panel_NetworkSettingsInputs.Controls.Add(this.label9);
-            this.panel_NetworkSettingsInputs.Controls.Add(this.txtGateWay);
-            this.panel_NetworkSettingsInputs.Controls.Add(this.txtNetMask);
-            this.panel_NetworkSettingsInputs.Controls.Add(this.label10);
-            this.panel_NetworkSettingsInputs.Location = new System.Drawing.Point(6, 97);
-            this.panel_NetworkSettingsInputs.Name = "panel_NetworkSettingsInputs";
-            this.panel_NetworkSettingsInputs.Size = new System.Drawing.Size(303, 105);
-            this.panel_NetworkSettingsInputs.TabIndex = 8;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(13, 13);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(54, 13);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Server IP:";
             // 
-            // checkBox_NetworkSettingsRebootDevice
+            // groupBoxMySQLConfig
             // 
-            this.checkBox_NetworkSettingsRebootDevice.AutoSize = true;
-            this.checkBox_NetworkSettingsRebootDevice.Location = new System.Drawing.Point(23, 64);
-            this.checkBox_NetworkSettingsRebootDevice.Name = "checkBox_NetworkSettingsRebootDevice";
-            this.checkBox_NetworkSettingsRebootDevice.Size = new System.Drawing.Size(205, 17);
-            this.checkBox_NetworkSettingsRebootDevice.TabIndex = 9;
-            this.checkBox_NetworkSettingsRebootDevice.Text = "Reboot the device after saving data? ";
-            this.checkBox_NetworkSettingsRebootDevice.UseVisualStyleBackColor = true;
+            this.groupBoxMySQLConfig.Controls.Add(this.panel_MySqlServerSettingsInputs);
+            this.groupBoxMySQLConfig.Controls.Add(this.checkBox_DisableMySQL);
+            this.groupBoxMySQLConfig.Location = new System.Drawing.Point(12, 15);
+            this.groupBoxMySQLConfig.Name = "groupBoxMySQLConfig";
+            this.groupBoxMySQLConfig.Size = new System.Drawing.Size(469, 369);
+            this.groupBoxMySQLConfig.TabIndex = 1;
+            this.groupBoxMySQLConfig.TabStop = false;
+            this.groupBoxMySQLConfig.Text = "MySql configuration:";
             // 
-            // label12
+            // checkBox_DisableMySQL
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 48);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(241, 13);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "Network configuration needs a reboot to activate:";
+            this.checkBox_DisableMySQL.AutoSize = true;
+            this.checkBox_DisableMySQL.Location = new System.Drawing.Point(23, 32);
+            this.checkBox_DisableMySQL.Name = "checkBox_DisableMySQL";
+            this.checkBox_DisableMySQL.Size = new System.Drawing.Size(134, 17);
+            this.checkBox_DisableMySQL.TabIndex = 1;
+            this.checkBox_DisableMySQL.Text = "Disable MySQL usage.";
+            this.checkBox_DisableMySQL.UseVisualStyleBackColor = true;
+            this.checkBox_DisableMySQL.CheckedChanged += new System.EventHandler(this.checkBox_DisableMySQL_CheckedChanged);
+            // 
+            // panel_MySqlServerSettingsInputs
+            // 
+            this.panel_MySqlServerSettingsInputs.Controls.Add(this.txtMySqlServerTableName);
+            this.panel_MySqlServerSettingsInputs.Controls.Add(this.label17);
+            this.panel_MySqlServerSettingsInputs.Controls.Add(this.txtMySqlServerDatabaseName);
+            this.panel_MySqlServerSettingsInputs.Controls.Add(this.label16);
+            this.panel_MySqlServerSettingsInputs.Controls.Add(this.txtMySqlServerPassword);
+            this.panel_MySqlServerSettingsInputs.Controls.Add(this.label15);
+            this.panel_MySqlServerSettingsInputs.Controls.Add(this.txtMySqlServerUsername);
+            this.panel_MySqlServerSettingsInputs.Controls.Add(this.label14);
+            this.panel_MySqlServerSettingsInputs.Controls.Add(this.txtMySqlServerIP);
+            this.panel_MySqlServerSettingsInputs.Controls.Add(this.label13);
+            this.panel_MySqlServerSettingsInputs.Location = new System.Drawing.Point(23, 55);
+            this.panel_MySqlServerSettingsInputs.Name = "panel_MySqlServerSettingsInputs";
+            this.panel_MySqlServerSettingsInputs.Size = new System.Drawing.Size(340, 160);
+            this.panel_MySqlServerSettingsInputs.TabIndex = 2;
+            // 
+            // txtMySqlServerIP
+            // 
+            this.txtMySqlServerIP.Location = new System.Drawing.Point(73, 10);
+            this.txtMySqlServerIP.Name = "txtMySqlServerIP";
+            this.txtMySqlServerIP.Size = new System.Drawing.Size(245, 20);
+            this.txtMySqlServerIP.TabIndex = 1;
+            // 
+            // txtMySqlServerUsername
+            // 
+            this.txtMySqlServerUsername.Location = new System.Drawing.Point(113, 41);
+            this.txtMySqlServerUsername.Name = "txtMySqlServerUsername";
+            this.txtMySqlServerUsername.Size = new System.Drawing.Size(205, 20);
+            this.txtMySqlServerUsername.TabIndex = 3;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 44);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(94, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "MySQL username:";
+            // 
+            // txtMySqlServerPassword
+            // 
+            this.txtMySqlServerPassword.Location = new System.Drawing.Point(113, 67);
+            this.txtMySqlServerPassword.Name = "txtMySqlServerPassword";
+            this.txtMySqlServerPassword.Size = new System.Drawing.Size(205, 20);
+            this.txtMySqlServerPassword.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(13, 70);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(93, 13);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "MySQL password:";
+            // 
+            // txtMySqlServerDatabaseName
+            // 
+            this.txtMySqlServerDatabaseName.Location = new System.Drawing.Point(141, 93);
+            this.txtMySqlServerDatabaseName.Name = "txtMySqlServerDatabaseName";
+            this.txtMySqlServerDatabaseName.Size = new System.Drawing.Size(177, 20);
+            this.txtMySqlServerDatabaseName.TabIndex = 7;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(14, 96);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(121, 13);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "MySQL database name:";
+            // 
+            // txtMySqlServerTableName
+            // 
+            this.txtMySqlServerTableName.Location = new System.Drawing.Point(140, 117);
+            this.txtMySqlServerTableName.Name = "txtMySqlServerTableName";
+            this.txtMySqlServerTableName.Size = new System.Drawing.Size(177, 20);
+            this.txtMySqlServerTableName.TabIndex = 9;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(13, 120);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(100, 13);
+            this.label17.TabIndex = 8;
+            this.label17.Text = "MySQL table name:";
             // 
             // configManagerForm
             // 
@@ -437,6 +584,11 @@
             this.groupBoxSetNetworkingSettings.PerformLayout();
             this.panel_NetworkSettingsInputs.ResumeLayout(false);
             this.panel_NetworkSettingsInputs.PerformLayout();
+            this.tabMySQL.ResumeLayout(false);
+            this.groupBoxMySQLConfig.ResumeLayout(false);
+            this.groupBoxMySQLConfig.PerformLayout();
+            this.panel_MySqlServerSettingsInputs.ResumeLayout(false);
+            this.panel_MySqlServerSettingsInputs.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -477,5 +629,19 @@
         private System.Windows.Forms.Panel panel_NetworkSettingsInputs;
         private System.Windows.Forms.CheckBox checkBox_NetworkSettingsRebootDevice;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TabPage tabMySQL;
+        private System.Windows.Forms.GroupBox groupBoxMySQLConfig;
+        private System.Windows.Forms.Panel panel_MySqlServerSettingsInputs;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox checkBox_DisableMySQL;
+        private System.Windows.Forms.TextBox txtMySqlServerIP;
+        private System.Windows.Forms.TextBox txtMySqlServerUsername;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtMySqlServerPassword;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtMySqlServerDatabaseName;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtMySqlServerTableName;
+        private System.Windows.Forms.Label label17;
     }
 }

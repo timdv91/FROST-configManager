@@ -188,5 +188,27 @@ namespace FROST_configManager
                 return true;
             }
         }
+
+        //Load MySQL server settings:
+        public string[] getMySqlSettings()
+        {
+            CommandExecutionResult strOut = s.ExecuteCommand("cat /home/FROST/FROST_MySQL.conf");
+            Console.WriteLine(strOut.Output.ToString());
+
+            string[] configData = strOut.Output.ToString().Split('\n');
+            return configData;
+        }
+
+        //Load MySQL server settings:
+        public bool setMySqlSettings(bool _blMySqlDisabled, string _IP, string _UserName, string _Password, string _DatabaseName, string _TableName)
+        {
+            //Create config file layout:
+            string strConfigFileCreation = _blMySqlDisabled.ToString() + "\n" + _IP + "\n" + _UserName + "\n" + _Password + "\n" + _DatabaseName + "\n" + _TableName;
+
+            //Write config file to file on device:
+            CommandExecutionResult strOut = s.ExecuteCommand("echo \"" + strConfigFileCreation + "\" > /home/FROST/FROST_MySQL.conf");
+            Console.WriteLine(strOut.IsSuccess.ToString());
+            return strOut.IsSuccess;
+        }
     }
 }
