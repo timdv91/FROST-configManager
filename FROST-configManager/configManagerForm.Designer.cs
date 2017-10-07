@@ -76,6 +76,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtMySqlServerTableName = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.checkBox_MySqlTableNameUseDeviceName = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -473,6 +474,7 @@
             // 
             // panel_MySqlServerSettingsInputs
             // 
+            this.panel_MySqlServerSettingsInputs.Controls.Add(this.checkBox_MySqlTableNameUseDeviceName);
             this.panel_MySqlServerSettingsInputs.Controls.Add(this.txtMySqlServerTableName);
             this.panel_MySqlServerSettingsInputs.Controls.Add(this.label17);
             this.panel_MySqlServerSettingsInputs.Controls.Add(this.txtMySqlServerDatabaseName);
@@ -485,7 +487,7 @@
             this.panel_MySqlServerSettingsInputs.Controls.Add(this.label13);
             this.panel_MySqlServerSettingsInputs.Location = new System.Drawing.Point(23, 55);
             this.panel_MySqlServerSettingsInputs.Name = "panel_MySqlServerSettingsInputs";
-            this.panel_MySqlServerSettingsInputs.Size = new System.Drawing.Size(340, 160);
+            this.panel_MySqlServerSettingsInputs.Size = new System.Drawing.Size(440, 189);
             this.panel_MySqlServerSettingsInputs.TabIndex = 2;
             // 
             // txtMySqlServerIP
@@ -545,7 +547,7 @@
             // 
             // txtMySqlServerTableName
             // 
-            this.txtMySqlServerTableName.Location = new System.Drawing.Point(140, 117);
+            this.txtMySqlServerTableName.Location = new System.Drawing.Point(140, 150);
             this.txtMySqlServerTableName.Name = "txtMySqlServerTableName";
             this.txtMySqlServerTableName.Size = new System.Drawing.Size(177, 20);
             this.txtMySqlServerTableName.TabIndex = 9;
@@ -553,11 +555,22 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(13, 120);
+            this.label17.Location = new System.Drawing.Point(13, 153);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(100, 13);
             this.label17.TabIndex = 8;
             this.label17.Text = "MySQL table name:";
+            // 
+            // checkBox_MySqlTableNameUseDeviceName
+            // 
+            this.checkBox_MySqlTableNameUseDeviceName.AutoSize = true;
+            this.checkBox_MySqlTableNameUseDeviceName.Location = new System.Drawing.Point(16, 133);
+            this.checkBox_MySqlTableNameUseDeviceName.Name = "checkBox_MySqlTableNameUseDeviceName";
+            this.checkBox_MySqlTableNameUseDeviceName.Size = new System.Drawing.Size(256, 17);
+            this.checkBox_MySqlTableNameUseDeviceName.TabIndex = 10;
+            this.checkBox_MySqlTableNameUseDeviceName.Text = "Use Device name as table name (Recomended!)";
+            this.checkBox_MySqlTableNameUseDeviceName.UseVisualStyleBackColor = true;
+            this.checkBox_MySqlTableNameUseDeviceName.CheckedChanged += new System.EventHandler(this.checkBox_MySqlTableNameUseDeviceName_CheckedChanged);
             // 
             // configManagerForm
             // 
@@ -643,5 +656,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtMySqlServerTableName;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox checkBox_MySqlTableNameUseDeviceName;
     }
 }

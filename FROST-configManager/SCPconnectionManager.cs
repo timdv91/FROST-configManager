@@ -200,8 +200,13 @@ namespace FROST_configManager
         }
 
         //Load MySQL server settings:
-        public bool setMySqlSettings(bool _blMySqlDisabled, string _IP, string _UserName, string _Password, string _DatabaseName, string _TableName)
+        public bool setMySqlSettings(bool _blMySqlDisabled, string _IP, string _UserName, string _Password, string _DatabaseName, string _TableName, bool _blTableNameEqualsDeviceName)
         {
+            //get the current connected device name:
+            if(_blTableNameEqualsDeviceName == true)
+                _TableName = getDeviceName(); //if checkbox is checked, use deviceName as tablename.
+
+
             //Create config file layout:
             string strConfigFileCreation = _blMySqlDisabled.ToString() + "\n" + _IP + "\n" + _UserName + "\n" + _Password + "\n" + _DatabaseName + "\n" + _TableName;
 

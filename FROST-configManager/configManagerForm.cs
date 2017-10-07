@@ -98,6 +98,17 @@ namespace FROST_configManager
                 panel_MySqlServerSettingsInputs.Visible = false;
         }
 
+        private void checkBox_MySqlTableNameUseDeviceName_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox_MySqlTableNameUseDeviceName.Checked == true)
+            {
+                txtMySqlServerTableName.Enabled = false;
+                txtMySqlServerTableName.Text = txtDeviceName.Text;
+            }
+            else
+                txtMySqlServerTableName.Enabled = true;
+        }
+
         //=================================================================
         //=============Save and Load functions:============================
         //=================================================================
@@ -158,6 +169,9 @@ namespace FROST_configManager
             txtMySqlServerPassword.Text = MySQLConfiguration[3];
             txtMySqlServerDatabaseName.Text = MySQLConfiguration[4];
             txtMySqlServerTableName.Text = MySQLConfiguration[5];
+
+            if (txtMySqlServerTableName.Text == txtDeviceName.Text) //set checkbox true on load if both table and device name are equal.
+                checkBox_MySqlTableNameUseDeviceName.Checked = true;
 
             //add here more configs to load...
 
@@ -238,7 +252,7 @@ namespace FROST_configManager
             try
             {
                 foreach (SCPconnectionManager device in SCPcList)
-                    device.setMySqlSettings(checkBox_DisableMySQL.Checked, txtMySqlServerIP.Text, txtMySqlServerUsername.Text, txtMySqlServerPassword.Text, txtMySqlServerDatabaseName.Text, txtMySqlServerTableName.Text);
+                    device.setMySqlSettings(checkBox_DisableMySQL.Checked, txtMySqlServerIP.Text, txtMySqlServerUsername.Text, txtMySqlServerPassword.Text, txtMySqlServerDatabaseName.Text, txtMySqlServerTableName.Text, checkBox_MySqlTableNameUseDeviceName.Checked);
 
             }
             catch (Exception)
