@@ -137,18 +137,34 @@ namespace FROST_configManager
 
             //if above code runs fine: copy the config file to the correct location:
             if (_DHCPactive == false)
-                strOut = s.ExecuteCommand("echo " + _Password + " | sudo -S cp /home/FROST/FROST_NetworkSettings.conf /etc/network/interfaces" ); //Copy config file to etc/network/interfaces:
+            {
+                s.ExecuteCommand("echo " + _Password + " | sudo -S cp /home/FROST/FROST_NetworkSettings.conf /etc/network/interfaces"); //Copy config file to etc/network/interfaces:
+                strOut = s.ExecuteCommand("diff /home/FROST/FROST_NetworkSettings.conf /etc/network/interfaces"); //strouput.IsSuccess of above line always returns false? Fix later on in code using this diff.
+            }
             else
-                strOut = s.ExecuteCommand("echo " + _Password + " | sudo -S cp /etc/network/interfaces.back /etc/network/interfaces"); //Copy interfaces backup file back to etc/network/interfaces:
+            {
+                s.ExecuteCommand("echo " + _Password + " | sudo -S cp /etc/network/interfaces.back /etc/network/interfaces"); //Copy interfaces backup file back to etc/network/interfaces:
+                strOut = s.ExecuteCommand("diff /etc/network/interfaces.back /etc/network/interfaces"); //strouput.IsSuccess of above line always returns false? Fix later on in code using this diff.
+            }
 
-            Console.WriteLine("Here somthing wierd happens before calling reboot function... This is always false but seems to execute correctly??? Ignoring this error for the moment... " + strOut.IsSuccess.ToString());
+            //As strouput.IsSuccess on the copy 'cp' line always returns false, I fix it using the 'diff' command. The diff command compares the two files after copying. 
+            //If both files are equal then nothing is in strOut.Output (null). This triggers NullReferenceException when copy of file was success.
+            try 
+            {
+                Console.WriteLine("False, \nReturn content: \n" + strOut.Output.ToString()); //if copy of files was success this should trigger NullReferenceException.
+                return false; //No exception triggerd on above line? Then somthing went wrong copying the files. :)
+            }
+            catch(NullReferenceException) //when copy was success continou:
+            {
+                Console.WriteLine(strOut.IsSuccess.ToString()); //should always be true.
+                
+                //reboot to change IP:
+                if (_rebootDevice == true) //reboot only if requested.
+                    setReboot(_Password);
 
-            //reboot to change IP:
-            if (_rebootDevice == true)
-                setReboot(_Password);
-
-            //return strOut.IsSuccess; //  --> seems to return errors for nothing... All coused by linux that cant act stable on a reboot command...
-            return true;
+                //return strOut.IsSuccess; //  --> seems to return errors for nothing... All coused by linux that cant act stable on a reboot command...
+                return strOut.IsSuccess;
+            }          
         }
 
         //Reboot the device:

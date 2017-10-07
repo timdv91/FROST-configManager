@@ -134,6 +134,8 @@ namespace FROST_configManager
                 comboBox_DHCPorSTATIC_IP.SelectedIndex = 1;
                 panel_NetworkSettingsInputs.Visible = true;
             }
+            
+            
             //add here more configs to load...
 
 
@@ -238,7 +240,8 @@ namespace FROST_configManager
             //Close this 'Form' when reboot is active:
             //======================================================================
             if (checkBox_NetworkSettingsRebootDevice.Checked == true)
-                this.Close();            
+                this.Close();   
+            
             //return if there where errors:
             //======================================================================
             if (strErrorMsg != "")
