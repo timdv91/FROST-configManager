@@ -109,6 +109,39 @@ namespace FROST_configManager
                 txtMySqlServerTableName.Enabled = true;
         }
 
+        private void btnSaveNewEmailAdress_Click(object sender, EventArgs e)
+        {
+            if(txtNewEmailAdress.Text.Length > 0 && txtNewEmailAdress.Text.Contains('@'))
+            {
+                listBox_EmailAdresses.Items.Add(txtNewEmailAdress.Text);
+                txtNewEmailAdress.Clear();
+            }
+        }
+
+        private void txtNewEmailAdress_TextChanged(object sender, EventArgs e)
+        {
+            if(txtNewEmailAdress.Text.Contains('@'))
+                btnSaveNewEmailAdress.Enabled = true;
+            else
+                btnSaveNewEmailAdress.Enabled = false;
+        }
+
+        private void listBox_EmailAdresses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox_EmailAdresses.SelectedItems.Count > 0)
+                btnDeleteSelectedEmailAdress.Enabled = true;
+            else
+                btnDeleteSelectedEmailAdress.Enabled = false;
+        }
+
+        private void btnDeleteSelectedEmailAdress_Click(object sender, EventArgs e)
+        {
+            for(int i = listBox_EmailAdresses.SelectedIndices.Count-1;i>=0;i--)
+            {
+                listBox_EmailAdresses.Items.RemoveAt(listBox_EmailAdresses.SelectedIndices[i]);
+            }
+        }
+
         //=================================================================
         //=============Save and Load functions:============================
         //=================================================================
@@ -129,7 +162,18 @@ namespace FROST_configManager
             //load device measure interval into textbox:
             txtMeasurmentInterval.Text = SCPcList[0].getMeasureInterval();
 
+            //load device temperature ranges (min & max) into textboxes:
+            string[] tempRanges = SCPcList[0].getTemperatureRanges();
+            txtTempRangeMin.Text = tempRanges[0]; //contains min temp.
+            txtTempRangeMax.Text = tempRanges[1]; //contains max temp.
 
+        //Email adresses tab:
+        //========================
+            foreach (string emailAddress in SCPcList[0].getMailList())
+            {
+                if(emailAddress.Contains('@'))
+                    listBox_EmailAdresses.Items.Add(emailAddress);
+            }
         //users and passwords tab:
         //========================
 
@@ -213,7 +257,7 @@ namespace FROST_configManager
             //======================================================================
             try
             {
-                if (Convert.ToInt32(txtMeasurmentInterval.Text) > 0)
+                if (Convert.ToInt32(txtMeasurmentInterval.Text) >= 10)
                 {
                     foreach (SCPconnectionManager device in SCPcList)
                     {
@@ -222,10 +266,56 @@ namespace FROST_configManager
                             strErrorMsg += "ERROR saving measurement interval.\n";
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Interval can not be smaller than 10");
+                    strErrorMsg += "WARNING saving measurement interval.\n";
+                }
             }
             catch (FormatException)
             {
                 MessageBox.Show("Measurement interval contains invalid chars. NOT SAVED!");
+            }
+
+            //Save Temperature ranges to file:
+            //======================================================================
+            try
+            {
+                if (Convert.ToInt32(txtTempRangeMin.Text) < Convert.ToInt32(txtTempRangeMax.Text))
+                {
+                    foreach (SCPconnectionManager device in SCPcList)
+                    {
+                        blIsSuccess = device.setTemperatureRanges(txtTempRangeMin.Text, txtTempRangeMax.Text);
+                        if (blIsSuccess == false)
+                            strErrorMsg += "ERROR saving Temperature ranges.\n";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Minimum temperature can not be larger than maximum temperature...");
+                    strErrorMsg += "WARNING saving Temperature ranges.\n";
+                }
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Temperature ranges contains invalid chars. NOT SAVED!");
+            }
+
+            //Save new maillist to file:
+            //======================================================================
+            try
+            {
+                foreach (SCPconnectionManager device in SCPcList)
+                {
+                    blIsSuccess = device.setMailList(listBox_EmailAdresses.Items.Cast<string>().ToList());
+                    if (blIsSuccess == false)
+                        strErrorMsg += "ERROR saving maillist.\n";
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Saving maillist exception!");
             }
 
             //Save new password:

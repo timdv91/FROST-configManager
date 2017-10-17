@@ -63,20 +63,30 @@
             this.label11 = new System.Windows.Forms.Label();
             this.comboBox_DHCPorSTATIC_IP = new System.Windows.Forms.ComboBox();
             this.tabMySQL = new System.Windows.Forms.TabPage();
-            this.label13 = new System.Windows.Forms.Label();
             this.groupBoxMySQLConfig = new System.Windows.Forms.GroupBox();
-            this.checkBox_DisableMySQL = new System.Windows.Forms.CheckBox();
             this.panel_MySqlServerSettingsInputs = new System.Windows.Forms.Panel();
-            this.txtMySqlServerIP = new System.Windows.Forms.TextBox();
-            this.txtMySqlServerUsername = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtMySqlServerPassword = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtMySqlServerDatabaseName = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.checkBox_MySqlTableNameUseDeviceName = new System.Windows.Forms.CheckBox();
             this.txtMySqlServerTableName = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.checkBox_MySqlTableNameUseDeviceName = new System.Windows.Forms.CheckBox();
+            this.txtMySqlServerDatabaseName = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtMySqlServerPassword = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtMySqlServerUsername = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtMySqlServerIP = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.checkBox_DisableMySQL = new System.Windows.Forms.CheckBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtTempRangeMin = new System.Windows.Forms.TextBox();
+            this.txtTempRangeMax = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tabEmail = new System.Windows.Forms.TabPage();
+            this.listBox_EmailAdresses = new System.Windows.Forms.ListBox();
+            this.btnSaveNewEmailAdress = new System.Windows.Forms.Button();
+            this.btnDeleteSelectedEmailAdress = new System.Windows.Forms.Button();
+            this.txtNewEmailAdress = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -91,6 +101,7 @@
             this.tabMySQL.SuspendLayout();
             this.groupBoxMySQLConfig.SuspendLayout();
             this.panel_MySqlServerSettingsInputs.SuspendLayout();
+            this.tabEmail.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
@@ -184,6 +195,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabGeneral);
+            this.tabControl1.Controls.Add(this.tabEmail);
             this.tabControl1.Controls.Add(this.tabUsers);
             this.tabControl1.Controls.Add(this.tabNetworking);
             this.tabControl1.Controls.Add(this.tabMySQL);
@@ -196,6 +208,10 @@
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.txtTempRangeMax);
+            this.tabGeneral.Controls.Add(this.label19);
+            this.tabGeneral.Controls.Add(this.txtTempRangeMin);
+            this.tabGeneral.Controls.Add(this.label18);
             this.tabGeneral.Controls.Add(this.label1);
             this.tabGeneral.Controls.Add(this.txtDeviceName);
             this.tabGeneral.Controls.Add(this.label3);
@@ -441,15 +457,6 @@
             this.tabMySQL.Text = "Mysql";
             this.tabMySQL.UseVisualStyleBackColor = true;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 13);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(54, 13);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Server IP:";
-            // 
             // groupBoxMySQLConfig
             // 
             this.groupBoxMySQLConfig.Controls.Add(this.panel_MySqlServerSettingsInputs);
@@ -460,17 +467,6 @@
             this.groupBoxMySQLConfig.TabIndex = 1;
             this.groupBoxMySQLConfig.TabStop = false;
             this.groupBoxMySQLConfig.Text = "MySql configuration:";
-            // 
-            // checkBox_DisableMySQL
-            // 
-            this.checkBox_DisableMySQL.AutoSize = true;
-            this.checkBox_DisableMySQL.Location = new System.Drawing.Point(23, 32);
-            this.checkBox_DisableMySQL.Name = "checkBox_DisableMySQL";
-            this.checkBox_DisableMySQL.Size = new System.Drawing.Size(134, 17);
-            this.checkBox_DisableMySQL.TabIndex = 1;
-            this.checkBox_DisableMySQL.Text = "Disable MySQL usage.";
-            this.checkBox_DisableMySQL.UseVisualStyleBackColor = true;
-            this.checkBox_DisableMySQL.CheckedChanged += new System.EventHandler(this.checkBox_DisableMySQL_CheckedChanged);
             // 
             // panel_MySqlServerSettingsInputs
             // 
@@ -490,60 +486,16 @@
             this.panel_MySqlServerSettingsInputs.Size = new System.Drawing.Size(440, 189);
             this.panel_MySqlServerSettingsInputs.TabIndex = 2;
             // 
-            // txtMySqlServerIP
+            // checkBox_MySqlTableNameUseDeviceName
             // 
-            this.txtMySqlServerIP.Location = new System.Drawing.Point(73, 10);
-            this.txtMySqlServerIP.Name = "txtMySqlServerIP";
-            this.txtMySqlServerIP.Size = new System.Drawing.Size(245, 20);
-            this.txtMySqlServerIP.TabIndex = 1;
-            // 
-            // txtMySqlServerUsername
-            // 
-            this.txtMySqlServerUsername.Location = new System.Drawing.Point(113, 41);
-            this.txtMySqlServerUsername.Name = "txtMySqlServerUsername";
-            this.txtMySqlServerUsername.Size = new System.Drawing.Size(205, 20);
-            this.txtMySqlServerUsername.TabIndex = 3;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 44);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 13);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "MySQL username:";
-            // 
-            // txtMySqlServerPassword
-            // 
-            this.txtMySqlServerPassword.Location = new System.Drawing.Point(113, 67);
-            this.txtMySqlServerPassword.Name = "txtMySqlServerPassword";
-            this.txtMySqlServerPassword.Size = new System.Drawing.Size(205, 20);
-            this.txtMySqlServerPassword.TabIndex = 5;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(13, 70);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(93, 13);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "MySQL password:";
-            // 
-            // txtMySqlServerDatabaseName
-            // 
-            this.txtMySqlServerDatabaseName.Location = new System.Drawing.Point(141, 93);
-            this.txtMySqlServerDatabaseName.Name = "txtMySqlServerDatabaseName";
-            this.txtMySqlServerDatabaseName.Size = new System.Drawing.Size(177, 20);
-            this.txtMySqlServerDatabaseName.TabIndex = 7;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(14, 96);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(121, 13);
-            this.label16.TabIndex = 6;
-            this.label16.Text = "MySQL database name:";
+            this.checkBox_MySqlTableNameUseDeviceName.AutoSize = true;
+            this.checkBox_MySqlTableNameUseDeviceName.Location = new System.Drawing.Point(16, 133);
+            this.checkBox_MySqlTableNameUseDeviceName.Name = "checkBox_MySqlTableNameUseDeviceName";
+            this.checkBox_MySqlTableNameUseDeviceName.Size = new System.Drawing.Size(256, 17);
+            this.checkBox_MySqlTableNameUseDeviceName.TabIndex = 10;
+            this.checkBox_MySqlTableNameUseDeviceName.Text = "Use Device name as table name (Recomended!)";
+            this.checkBox_MySqlTableNameUseDeviceName.UseVisualStyleBackColor = true;
+            this.checkBox_MySqlTableNameUseDeviceName.CheckedChanged += new System.EventHandler(this.checkBox_MySqlTableNameUseDeviceName_CheckedChanged);
             // 
             // txtMySqlServerTableName
             // 
@@ -561,16 +513,176 @@
             this.label17.TabIndex = 8;
             this.label17.Text = "MySQL table name:";
             // 
-            // checkBox_MySqlTableNameUseDeviceName
+            // txtMySqlServerDatabaseName
             // 
-            this.checkBox_MySqlTableNameUseDeviceName.AutoSize = true;
-            this.checkBox_MySqlTableNameUseDeviceName.Location = new System.Drawing.Point(16, 133);
-            this.checkBox_MySqlTableNameUseDeviceName.Name = "checkBox_MySqlTableNameUseDeviceName";
-            this.checkBox_MySqlTableNameUseDeviceName.Size = new System.Drawing.Size(256, 17);
-            this.checkBox_MySqlTableNameUseDeviceName.TabIndex = 10;
-            this.checkBox_MySqlTableNameUseDeviceName.Text = "Use Device name as table name (Recomended!)";
-            this.checkBox_MySqlTableNameUseDeviceName.UseVisualStyleBackColor = true;
-            this.checkBox_MySqlTableNameUseDeviceName.CheckedChanged += new System.EventHandler(this.checkBox_MySqlTableNameUseDeviceName_CheckedChanged);
+            this.txtMySqlServerDatabaseName.Location = new System.Drawing.Point(141, 93);
+            this.txtMySqlServerDatabaseName.Name = "txtMySqlServerDatabaseName";
+            this.txtMySqlServerDatabaseName.Size = new System.Drawing.Size(177, 20);
+            this.txtMySqlServerDatabaseName.TabIndex = 7;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(14, 96);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(121, 13);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "MySQL database name:";
+            // 
+            // txtMySqlServerPassword
+            // 
+            this.txtMySqlServerPassword.Location = new System.Drawing.Point(113, 67);
+            this.txtMySqlServerPassword.Name = "txtMySqlServerPassword";
+            this.txtMySqlServerPassword.Size = new System.Drawing.Size(205, 20);
+            this.txtMySqlServerPassword.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(13, 70);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(93, 13);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "MySQL password:";
+            // 
+            // txtMySqlServerUsername
+            // 
+            this.txtMySqlServerUsername.Location = new System.Drawing.Point(113, 41);
+            this.txtMySqlServerUsername.Name = "txtMySqlServerUsername";
+            this.txtMySqlServerUsername.Size = new System.Drawing.Size(205, 20);
+            this.txtMySqlServerUsername.TabIndex = 3;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 44);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(94, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "MySQL username:";
+            // 
+            // txtMySqlServerIP
+            // 
+            this.txtMySqlServerIP.Location = new System.Drawing.Point(73, 10);
+            this.txtMySqlServerIP.Name = "txtMySqlServerIP";
+            this.txtMySqlServerIP.Size = new System.Drawing.Size(245, 20);
+            this.txtMySqlServerIP.TabIndex = 1;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(13, 13);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(54, 13);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Server IP:";
+            // 
+            // checkBox_DisableMySQL
+            // 
+            this.checkBox_DisableMySQL.AutoSize = true;
+            this.checkBox_DisableMySQL.Location = new System.Drawing.Point(23, 32);
+            this.checkBox_DisableMySQL.Name = "checkBox_DisableMySQL";
+            this.checkBox_DisableMySQL.Size = new System.Drawing.Size(134, 17);
+            this.checkBox_DisableMySQL.TabIndex = 1;
+            this.checkBox_DisableMySQL.Text = "Disable MySQL usage.";
+            this.checkBox_DisableMySQL.UseVisualStyleBackColor = true;
+            this.checkBox_DisableMySQL.CheckedChanged += new System.EventHandler(this.checkBox_DisableMySQL_CheckedChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(3, 270);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(149, 13);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "Minimum allowed temperature:";
+            // 
+            // txtTempRangeMin
+            // 
+            this.txtTempRangeMin.Location = new System.Drawing.Point(169, 267);
+            this.txtTempRangeMin.Name = "txtTempRangeMin";
+            this.txtTempRangeMin.Size = new System.Drawing.Size(174, 20);
+            this.txtTempRangeMin.TabIndex = 9;
+            // 
+            // txtTempRangeMax
+            // 
+            this.txtTempRangeMax.Location = new System.Drawing.Point(169, 295);
+            this.txtTempRangeMax.Name = "txtTempRangeMax";
+            this.txtTempRangeMax.Size = new System.Drawing.Size(174, 20);
+            this.txtTempRangeMax.TabIndex = 11;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(3, 298);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(152, 13);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "Maximum allowed temperature:";
+            // 
+            // tabEmail
+            // 
+            this.tabEmail.Controls.Add(this.label20);
+            this.tabEmail.Controls.Add(this.txtNewEmailAdress);
+            this.tabEmail.Controls.Add(this.btnDeleteSelectedEmailAdress);
+            this.tabEmail.Controls.Add(this.btnSaveNewEmailAdress);
+            this.tabEmail.Controls.Add(this.listBox_EmailAdresses);
+            this.tabEmail.Location = new System.Drawing.Point(4, 22);
+            this.tabEmail.Name = "tabEmail";
+            this.tabEmail.Padding = new System.Windows.Forms.Padding(3);
+            this.tabEmail.Size = new System.Drawing.Size(623, 511);
+            this.tabEmail.TabIndex = 4;
+            this.tabEmail.Text = "Mail adresses";
+            this.tabEmail.UseVisualStyleBackColor = true;
+            // 
+            // listBox_EmailAdresses
+            // 
+            this.listBox_EmailAdresses.FormattingEnabled = true;
+            this.listBox_EmailAdresses.Location = new System.Drawing.Point(17, 16);
+            this.listBox_EmailAdresses.Name = "listBox_EmailAdresses";
+            this.listBox_EmailAdresses.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBox_EmailAdresses.Size = new System.Drawing.Size(585, 316);
+            this.listBox_EmailAdresses.TabIndex = 0;
+            this.listBox_EmailAdresses.SelectedIndexChanged += new System.EventHandler(this.listBox_EmailAdresses_SelectedIndexChanged);
+            // 
+            // btnSaveNewEmailAdress
+            // 
+            this.btnSaveNewEmailAdress.Enabled = false;
+            this.btnSaveNewEmailAdress.Location = new System.Drawing.Point(446, 338);
+            this.btnSaveNewEmailAdress.Name = "btnSaveNewEmailAdress";
+            this.btnSaveNewEmailAdress.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveNewEmailAdress.TabIndex = 1;
+            this.btnSaveNewEmailAdress.Text = "Save";
+            this.btnSaveNewEmailAdress.UseVisualStyleBackColor = true;
+            this.btnSaveNewEmailAdress.Click += new System.EventHandler(this.btnSaveNewEmailAdress_Click);
+            // 
+            // btnDeleteSelectedEmailAdress
+            // 
+            this.btnDeleteSelectedEmailAdress.Enabled = false;
+            this.btnDeleteSelectedEmailAdress.Location = new System.Drawing.Point(527, 338);
+            this.btnDeleteSelectedEmailAdress.Name = "btnDeleteSelectedEmailAdress";
+            this.btnDeleteSelectedEmailAdress.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteSelectedEmailAdress.TabIndex = 2;
+            this.btnDeleteSelectedEmailAdress.Text = "Delete selected";
+            this.btnDeleteSelectedEmailAdress.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedEmailAdress.Click += new System.EventHandler(this.btnDeleteSelectedEmailAdress_Click);
+            // 
+            // txtNewEmailAdress
+            // 
+            this.txtNewEmailAdress.Location = new System.Drawing.Point(133, 338);
+            this.txtNewEmailAdress.Name = "txtNewEmailAdress";
+            this.txtNewEmailAdress.Size = new System.Drawing.Size(307, 20);
+            this.txtNewEmailAdress.TabIndex = 3;
+            this.txtNewEmailAdress.TextChanged += new System.EventHandler(this.txtNewEmailAdress_TextChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(14, 341);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(113, 13);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "Add new email adress:";
             // 
             // configManagerForm
             // 
@@ -602,6 +714,8 @@
             this.groupBoxMySQLConfig.PerformLayout();
             this.panel_MySqlServerSettingsInputs.ResumeLayout(false);
             this.panel_MySqlServerSettingsInputs.PerformLayout();
+            this.tabEmail.ResumeLayout(false);
+            this.tabEmail.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -657,5 +771,15 @@
         private System.Windows.Forms.TextBox txtMySqlServerTableName;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox checkBox_MySqlTableNameUseDeviceName;
+        private System.Windows.Forms.TextBox txtTempRangeMax;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtTempRangeMin;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TabPage tabEmail;
+        private System.Windows.Forms.ListBox listBox_EmailAdresses;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtNewEmailAdress;
+        private System.Windows.Forms.Button btnDeleteSelectedEmailAdress;
+        private System.Windows.Forms.Button btnSaveNewEmailAdress;
     }
 }

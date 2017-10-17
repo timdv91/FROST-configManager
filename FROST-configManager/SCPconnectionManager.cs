@@ -199,7 +199,7 @@ namespace FROST_configManager
             return configData;
         }
 
-        //Load MySQL server settings:
+        //Save MySQL server settings:
         public bool setMySqlSettings(bool _blMySqlDisabled, string _IP, string _UserName, string _Password, string _DatabaseName, string _TableName, bool _blTableNameEqualsDeviceName)
         {
             //get the current connected device name:
@@ -212,6 +212,45 @@ namespace FROST_configManager
 
             //Write config file to file on device:
             CommandExecutionResult strOut = s.ExecuteCommand("echo \"" + strConfigFileCreation + "\" > /home/FROST/FROST_MySQL.conf");
+            Console.WriteLine(strOut.IsSuccess.ToString());
+            return strOut.IsSuccess;
+        }
+
+        //Load device temperature ranges:
+        public string[] getTemperatureRanges()
+        {
+            CommandExecutionResult strOut = s.ExecuteCommand("cat /home/FROST/FROST_TempRanges.conf");
+            Console.WriteLine(strOut.Output.ToString());
+            string[] tempRangeArr = strOut.Output.ToString().Split(':');
+            return tempRangeArr;
+        }
+
+        //Save device temperature ranges:
+        public bool setTemperatureRanges(string _tempRangeMin, string _tempRangeMax)
+        {
+            CommandExecutionResult strOut = s.ExecuteCommand("echo \"" + _tempRangeMin + ":" +_tempRangeMax + "\" > /home/FROST/FROST_TempRanges.conf");
+            Console.WriteLine(strOut.IsSuccess.ToString());
+            return strOut.IsSuccess;
+        }
+
+        //Load device mail list:
+        public List<string> getMailList()
+        {
+            CommandExecutionResult strOut = s.ExecuteCommand("cat /home/FROST/FROST_mailList.conf");
+            Console.WriteLine(strOut.Output.ToString());
+            List<string> mailListArr = strOut.Output.ToString().Split(' ').ToList<string>();
+            return mailListArr;
+        }
+
+        //Save device mail list:
+        public bool setMailList(List<string> _mailAdressesList)
+        {
+            string mailList = ""; //create empty mailList var to write to file.
+
+            foreach (string emailAddr in _mailAdressesList) //add all email adresses to this mailList var, inserting a space inbeteween so ssmtp knows how to handle it.
+                mailList += emailAddr + " ";
+
+            CommandExecutionResult strOut = s.ExecuteCommand("echo \"" + mailList + "\" > /home/FROST/FROST_mailList.conf");
             Console.WriteLine(strOut.IsSuccess.ToString());
             return strOut.IsSuccess;
         }
