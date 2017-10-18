@@ -281,10 +281,18 @@ namespace FROST_configManager
             TransferOptions transferOptions = new TransferOptions();
             transferOptions.TransferMode = TransferMode.Binary;
             TransferOperationResult transferResult;
-            transferResult = s.GetFiles("/home/FROST/*.log", strOut.Output.ToString() + "\\", false, transferOptions);
+            transferResult = s.GetFiles("/home/FROST/*.log", AppDomain.CurrentDomain.BaseDirectory.ToString() + '\\' + strOut.Output.ToString() + '\\', false, transferOptions);
             //saves the to download files inside newly created folder. Keeping their default filenames.
 
-            return transferResult.IsSuccess;
+            // Throw on any error
+            transferResult.Check();
+
+            Console.WriteLine("Downloading the log files endstate: " + transferResult.IsSuccess.ToString());
+
+            if (transferResult.IsSuccess == false)
+                Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory.ToString() + '\\' + strOut.Output.ToString() + '\\');
+
+            return transferResult.IsSuccess; //return if transfer was a success.
         }
     }
 }
