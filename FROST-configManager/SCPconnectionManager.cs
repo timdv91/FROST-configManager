@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WinSCP;
 using System.Threading;
+using System.IO;
 
 namespace FROST_configManager
 {
@@ -57,7 +58,6 @@ namespace FROST_configManager
             Console.WriteLine(strOut.Output.ToString());
             return strOut.Output.ToString();
         }
-
 
         //Load device name:
         public string getDeviceName()
@@ -253,6 +253,38 @@ namespace FROST_configManager
             CommandExecutionResult strOut = s.ExecuteCommand("echo \"" + mailList + "\" > /home/FROST/FROST_mailList.conf");
             Console.WriteLine(strOut.IsSuccess.ToString());
             return strOut.IsSuccess;
+        }
+
+        //Save the tempLog and alarmsocketlog file on local machine as backup:
+        public bool getLogFiles()
+        {
+            //get device name from file to use as foldername:
+            CommandExecutionResult strOut = s.ExecuteCommand("cat /home/FROST/FROST_DeviceName.conf");
+            Console.WriteLine(strOut.Output.ToString());
+
+            if (strOut.IsSuccess == false) //if getting devicename failed, return false:
+                return false;
+
+            //try to create a new directory named after the device:
+            try
+            {
+                Directory.CreateDirectory(strOut.Output.ToString());
+            }
+            catch (IOException)
+            {
+                Console.WriteLine("IOException while creating new folder named after devicename.");
+                return false; //if creating dir failed, return false.
+            }
+
+            // Download files:
+            // Trying the GetFiles function as these files contain lot of data and this would probably be faster:
+            TransferOptions transferOptions = new TransferOptions();
+            transferOptions.TransferMode = TransferMode.Binary;
+            TransferOperationResult transferResult;
+            transferResult = s.GetFiles("/home/FROST/*.log", strOut.Output.ToString() + "\\", false, transferOptions);
+            //saves the to download files inside newly created folder. Keeping their default filenames.
+
+            return transferResult.IsSuccess;
         }
     }
 }

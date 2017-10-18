@@ -142,6 +142,17 @@ namespace FROST_configManager
             }
         }
 
+        private void btnCreateBackupOfLogFiles_Click(object sender, EventArgs e)
+        {
+            foreach(SCPconnectionManager device in SCPcList)
+            {
+                bool blIsSuccess = device.getLogFiles();
+
+                if (blIsSuccess == false)
+                    MessageBox.Show("ERROR while downloading log files from FROST device: " + txtDeviceName.Text);
+            }
+        }
+
         //=================================================================
         //=============Save and Load functions:============================
         //=================================================================
@@ -390,5 +401,7 @@ namespace FROST_configManager
             else
                 return "Save completed.";
         }
+
+        
     }
 }
