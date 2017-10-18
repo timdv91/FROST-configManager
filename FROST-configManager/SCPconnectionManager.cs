@@ -285,8 +285,7 @@ namespace FROST_configManager
             //saves the to download files inside newly created folder. Keeping their default filenames.
 
             // Throw on any error
-            transferResult.Check();
-
+            transferResult.Check(); //Absolutly no idea why it should be here, but it was present in online documentatio of winscp...
             Console.WriteLine("Downloading the log files endstate: " + transferResult.IsSuccess.ToString());
 
             if (transferResult.IsSuccess == false)
