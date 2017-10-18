@@ -142,6 +142,17 @@ namespace FROST_configManager
             }
         }
 
+        private void btnCreateBackupOfLogFiles_Click(object sender, EventArgs e)
+        {
+            foreach(SCPconnectionManager device in SCPcList) //Loop all selected devices.
+            {
+                bool blIsSuccess = device.getLogFiles(); //Downloads file direct from SCPconnectionManager to hdd.
+
+                if (blIsSuccess == false) //If backing up failes, show error message to user. --> to add in next update: find way to add devicnename where te failure occured.
+                    MessageBox.Show("ERROR while downloading log files from FROST device: " + txtDeviceName.Text);
+            }
+        }
+
         //=================================================================
         //=============Save and Load functions:============================
         //=================================================================
@@ -390,5 +401,7 @@ namespace FROST_configManager
             else
                 return "Save completed.";
         }
+
+        
     }
 }
