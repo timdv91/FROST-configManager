@@ -206,6 +206,7 @@ namespace FROST_configManager
             if (_blTableNameEqualsDeviceName == true)
             {
                 _TableName = getDeviceName(); //if checkbox is checked, use deviceName as tablename.
+                _TableName = string.Join("", _TableName.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries)); //removes all spaces from the string contianing device name.
             }
 
 
