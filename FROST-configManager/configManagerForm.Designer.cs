@@ -37,6 +37,7 @@
             this.txtMeasurmentInterval = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnCreateBackupOfLogFiles = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
             this.txtTempRangeMax = new System.Windows.Forms.TextBox();
@@ -87,7 +88,6 @@
             this.txtMySqlServerIP = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.checkBox_DisableMySQL = new System.Windows.Forms.CheckBox();
-            this.btnCreateBackupOfLogFiles = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -193,6 +193,16 @@
             this.splitContainer1.Size = new System.Drawing.Size(734, 537);
             this.splitContainer1.SplitterDistance = 99;
             this.splitContainer1.TabIndex = 8;
+            // 
+            // btnCreateBackupOfLogFiles
+            // 
+            this.btnCreateBackupOfLogFiles.Location = new System.Drawing.Point(12, 121);
+            this.btnCreateBackupOfLogFiles.Name = "btnCreateBackupOfLogFiles";
+            this.btnCreateBackupOfLogFiles.Size = new System.Drawing.Size(75, 39);
+            this.btnCreateBackupOfLogFiles.TabIndex = 6;
+            this.btnCreateBackupOfLogFiles.Text = "Backup log";
+            this.btnCreateBackupOfLogFiles.UseVisualStyleBackColor = true;
+            this.btnCreateBackupOfLogFiles.Click += new System.EventHandler(this.btnCreateBackupOfLogFiles_Click);
             // 
             // tabControl1
             // 
@@ -587,6 +597,8 @@
             // checkBox_MySqlTableNameUseDeviceName
             // 
             this.checkBox_MySqlTableNameUseDeviceName.AutoSize = true;
+            this.checkBox_MySqlTableNameUseDeviceName.Checked = true;
+            this.checkBox_MySqlTableNameUseDeviceName.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_MySqlTableNameUseDeviceName.Location = new System.Drawing.Point(16, 133);
             this.checkBox_MySqlTableNameUseDeviceName.Name = "checkBox_MySqlTableNameUseDeviceName";
             this.checkBox_MySqlTableNameUseDeviceName.Size = new System.Drawing.Size(256, 17);
@@ -685,16 +697,6 @@
             this.checkBox_DisableMySQL.Text = "Disable MySQL usage.";
             this.checkBox_DisableMySQL.UseVisualStyleBackColor = true;
             this.checkBox_DisableMySQL.CheckedChanged += new System.EventHandler(this.checkBox_DisableMySQL_CheckedChanged);
-            // 
-            // btnCreateBackupOfLogFiles
-            // 
-            this.btnCreateBackupOfLogFiles.Location = new System.Drawing.Point(12, 121);
-            this.btnCreateBackupOfLogFiles.Name = "btnCreateBackupOfLogFiles";
-            this.btnCreateBackupOfLogFiles.Size = new System.Drawing.Size(75, 39);
-            this.btnCreateBackupOfLogFiles.TabIndex = 6;
-            this.btnCreateBackupOfLogFiles.Text = "Backup log";
-            this.btnCreateBackupOfLogFiles.UseVisualStyleBackColor = true;
-            this.btnCreateBackupOfLogFiles.Click += new System.EventHandler(this.btnCreateBackupOfLogFiles_Click);
             // 
             // configManagerForm
             // 
