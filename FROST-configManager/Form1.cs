@@ -37,7 +37,6 @@ namespace FROST_configManager
             var result = loginF.ShowDialog();
 
             //if login form has been submited, continue:
-            progressBar1.Maximum = 40;
             if (result == DialogResult.OK)
             {
                 listBox_DevicesDiscoverd.Items.Clear(); //clear items in listbox before rediscovering starts.
