@@ -235,6 +235,12 @@ namespace FROST_configManager
             if (txtMySqlServerTableName.Text == txtDeviceName.Text) //set checkbox true on load if both table and device name are equal.
                 checkBox_MySqlTableNameUseDeviceName.Checked = true;
 
+            //FROST device left over diskspace on memory card:
+            //================================================
+            string[] diskUsageArr = SCPcList[0].getDeviceDiskUsage();
+            progressBar_DiskUsage.Value = Convert.ToInt32(diskUsageArr[4].TrimEnd('%'));
+            lblDiskUsage.Text += "\nTotal diskspace: " + diskUsageArr[1] +"\nUsed diskspace: " + diskUsageArr[2] + "\nAvailable diskspace: " + diskUsageArr[3];
+
             //add here more configs to load...
 
 

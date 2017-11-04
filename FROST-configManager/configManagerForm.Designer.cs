@@ -88,6 +88,10 @@
             this.txtMySqlServerIP = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.checkBox_DisableMySQL = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblDiskUsage = new System.Windows.Forms.Label();
+            this.progressBar_DiskUsage = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -103,6 +107,8 @@
             this.tabMySQL.SuspendLayout();
             this.groupBoxMySQLConfig.SuspendLayout();
             this.panel_MySqlServerSettingsInputs.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
@@ -118,7 +124,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 4);
+            this.label1.Location = new System.Drawing.Point(14, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 13);
             this.label1.TabIndex = 1;
@@ -126,17 +132,17 @@
             // 
             // richTextBox_DeviceInformation
             // 
-            this.richTextBox_DeviceInformation.Location = new System.Drawing.Point(9, 20);
+            this.richTextBox_DeviceInformation.Location = new System.Drawing.Point(17, 32);
             this.richTextBox_DeviceInformation.Name = "richTextBox_DeviceInformation";
             this.richTextBox_DeviceInformation.ReadOnly = true;
-            this.richTextBox_DeviceInformation.Size = new System.Drawing.Size(337, 160);
+            this.richTextBox_DeviceInformation.Size = new System.Drawing.Size(324, 160);
             this.richTextBox_DeviceInformation.TabIndex = 2;
             this.richTextBox_DeviceInformation.Text = "";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 198);
+            this.label2.Location = new System.Drawing.Point(15, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 13);
             this.label2.TabIndex = 3;
@@ -144,7 +150,7 @@
             // 
             // txtDeviceName
             // 
-            this.txtDeviceName.Location = new System.Drawing.Point(85, 195);
+            this.txtDeviceName.Location = new System.Drawing.Point(94, 23);
             this.txtDeviceName.Name = "txtDeviceName";
             this.txtDeviceName.Size = new System.Drawing.Size(261, 20);
             this.txtDeviceName.TabIndex = 4;
@@ -161,7 +167,7 @@
             // 
             // txtMeasurmentInterval
             // 
-            this.txtMeasurmentInterval.Location = new System.Drawing.Point(172, 224);
+            this.txtMeasurmentInterval.Location = new System.Drawing.Point(181, 52);
             this.txtMeasurmentInterval.Name = "txtMeasurmentInterval";
             this.txtMeasurmentInterval.Size = new System.Drawing.Size(174, 20);
             this.txtMeasurmentInterval.TabIndex = 6;
@@ -169,7 +175,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 227);
+            this.label3.Location = new System.Drawing.Point(15, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(160, 13);
             this.label3.TabIndex = 7;
@@ -220,16 +226,8 @@
             // 
             // tabGeneral
             // 
-            this.tabGeneral.Controls.Add(this.txtTempRangeMax);
-            this.tabGeneral.Controls.Add(this.label19);
-            this.tabGeneral.Controls.Add(this.txtTempRangeMin);
-            this.tabGeneral.Controls.Add(this.label18);
-            this.tabGeneral.Controls.Add(this.label1);
-            this.tabGeneral.Controls.Add(this.txtDeviceName);
-            this.tabGeneral.Controls.Add(this.label3);
-            this.tabGeneral.Controls.Add(this.label2);
-            this.tabGeneral.Controls.Add(this.richTextBox_DeviceInformation);
-            this.tabGeneral.Controls.Add(this.txtMeasurmentInterval);
+            this.tabGeneral.Controls.Add(this.groupBox3);
+            this.tabGeneral.Controls.Add(this.groupBox2);
             this.tabGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabGeneral.Name = "tabGeneral";
             this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
@@ -240,7 +238,7 @@
             // 
             // txtTempRangeMax
             // 
-            this.txtTempRangeMax.Location = new System.Drawing.Point(169, 295);
+            this.txtTempRangeMax.Location = new System.Drawing.Point(178, 123);
             this.txtTempRangeMax.Name = "txtTempRangeMax";
             this.txtTempRangeMax.Size = new System.Drawing.Size(174, 20);
             this.txtTempRangeMax.TabIndex = 11;
@@ -248,7 +246,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 298);
+            this.label19.Location = new System.Drawing.Point(12, 126);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(152, 13);
             this.label19.TabIndex = 10;
@@ -256,7 +254,7 @@
             // 
             // txtTempRangeMin
             // 
-            this.txtTempRangeMin.Location = new System.Drawing.Point(169, 267);
+            this.txtTempRangeMin.Location = new System.Drawing.Point(178, 95);
             this.txtTempRangeMin.Name = "txtTempRangeMin";
             this.txtTempRangeMin.Size = new System.Drawing.Size(174, 20);
             this.txtTempRangeMin.TabIndex = 9;
@@ -264,7 +262,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 270);
+            this.label18.Location = new System.Drawing.Point(12, 98);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(149, 13);
             this.label18.TabIndex = 8;
@@ -698,6 +696,52 @@
             this.checkBox_DisableMySQL.UseVisualStyleBackColor = true;
             this.checkBox_DisableMySQL.CheckedChanged += new System.EventHandler(this.checkBox_DisableMySQL_CheckedChanged);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtMeasurmentInterval);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.txtTempRangeMax);
+            this.groupBox2.Controls.Add(this.txtDeviceName);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.txtTempRangeMin);
+            this.groupBox2.Location = new System.Drawing.Point(9, 219);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(606, 167);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "General settings:";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lblDiskUsage);
+            this.groupBox3.Controls.Add(this.progressBar_DiskUsage);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.richTextBox_DeviceInformation);
+            this.groupBox3.Location = new System.Drawing.Point(9, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(606, 207);
+            this.groupBox3.TabIndex = 15;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "General Information:";
+            // 
+            // lblDiskUsage
+            // 
+            this.lblDiskUsage.AutoSize = true;
+            this.lblDiskUsage.Location = new System.Drawing.Point(347, 32);
+            this.lblDiskUsage.Name = "lblDiskUsage";
+            this.lblDiskUsage.Size = new System.Drawing.Size(63, 13);
+            this.lblDiskUsage.TabIndex = 15;
+            this.lblDiskUsage.Text = "Disk usage:";
+            // 
+            // progressBar_DiskUsage
+            // 
+            this.progressBar_DiskUsage.Location = new System.Drawing.Point(488, 45);
+            this.progressBar_DiskUsage.Name = "progressBar_DiskUsage";
+            this.progressBar_DiskUsage.Size = new System.Drawing.Size(112, 23);
+            this.progressBar_DiskUsage.TabIndex = 14;
+            // 
             // configManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -714,7 +758,6 @@
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
-            this.tabGeneral.PerformLayout();
             this.tabEmail.ResumeLayout(false);
             this.tabEmail.PerformLayout();
             this.tabUsers.ResumeLayout(false);
@@ -730,6 +773,10 @@
             this.groupBoxMySQLConfig.PerformLayout();
             this.panel_MySqlServerSettingsInputs.ResumeLayout(false);
             this.panel_MySqlServerSettingsInputs.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -796,5 +843,9 @@
         private System.Windows.Forms.Button btnDeleteSelectedEmailAdress;
         private System.Windows.Forms.Button btnSaveNewEmailAdress;
         private System.Windows.Forms.Button btnCreateBackupOfLogFiles;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label lblDiskUsage;
+        private System.Windows.Forms.ProgressBar progressBar_DiskUsage;
     }
 }

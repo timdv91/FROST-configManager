@@ -296,5 +296,38 @@ namespace FROST_configManager
 
             return transferResult.IsSuccess; //return if transfer was a success.
         }
+
+        //Gets the left over diskspace on the FROST device:
+        public string[] getDeviceDiskUsage()
+        {
+            try
+            {
+                CommandExecutionResult strOut = s.ExecuteCommand("df -h | grep mmc");
+                Console.WriteLine(strOut.Output.ToString());
+
+                //Split the string on spaces. Warning space count can be random, so clean up the array by removing all empty or only space containing values.
+                int I = 0; //I counter
+                string[] strRetArr = new string[6]; // 6 long as the / is the last character to enter
+                string[] strBufArr = strOut.Output.Split(' ');  //split on space
+                foreach (string str in strBufArr) //loop the splited string as an array
+                {
+                    if (str != "" && str != " ") //skip empty or spaces;
+                    {
+                        strRetArr[I] = str; // add usefull data to return array;
+                        Console.WriteLine(strRetArr[I]);
+                        I++;
+                    }
+                }
+
+                return strRetArr;
+            }
+            catch(Exception e)
+            {
+                string[] errorstring = new string[2];
+                errorstring[0] = "Exception happend loading diskusage!";
+                errorstring[1] = e.ToString();
+                return errorstring;
+            }
+        }
     }
 }
