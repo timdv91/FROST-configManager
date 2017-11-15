@@ -238,8 +238,12 @@ namespace FROST_configManager
             //FROST device left over diskspace on memory card:
             //================================================
             string[] diskUsageArr = SCPcList[0].getDeviceDiskUsage();
-            progressBar_DiskUsage.Value = Convert.ToInt32(diskUsageArr[4].TrimEnd('%'));
-            lblDiskUsage.Text += "\nTotal diskspace: " + diskUsageArr[1] +"\nUsed diskspace: " + diskUsageArr[2] + "\nAvailable diskspace: " + diskUsageArr[3];
+            if (diskUsageArr.Length > 4)
+            {
+                progressBar_DiskUsage.Value = Convert.ToInt32(diskUsageArr[4].TrimEnd('%'));
+                lblDiskUsage.Text += "\nTotal diskspace: " + diskUsageArr[1] + "\nUsed diskspace: " + diskUsageArr[2] + "\nAvailable diskspace: " + diskUsageArr[3];
+            } //else: warning using messagebox is normaly catched inside the scp class.
+
 
             //add here more configs to load...
 
