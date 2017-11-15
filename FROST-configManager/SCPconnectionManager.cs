@@ -336,7 +336,11 @@ namespace FROST_configManager
             {
                 //get device name from file to use as foldername:
                 CommandExecutionResult strOut = s.ExecuteCommand("sh /home/FROST/scripts/mySQL_dropTable.sh");
-                return strOut.IsSuccess;
+                Console.WriteLine("Shell script output: " + strOut.Output.ToString());
+                if (strOut.Output.ToString().Contains("Script completed sucessfully"))
+                    return true;
+                else
+                    return false;
             }catch(Exception)
             {
                 return false;

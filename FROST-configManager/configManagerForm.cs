@@ -171,6 +171,9 @@ namespace FROST_configManager
                     if (blIsSuccess == false)
                         MessageBox.Show("Error removing table for: " + device.getDeviceName().ToString());
                 }
+
+                if (blIsSuccess == true)
+                    MessageBox.Show("Table(s) removed sucessfully.");
             }
             else
                 MessageBox.Show("Removal of all data inside the tables for ALL selected devices! Please check the confirm checkbox before pressing the button.");
