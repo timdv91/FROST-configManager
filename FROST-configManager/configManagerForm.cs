@@ -151,7 +151,7 @@ namespace FROST_configManager
 
                 if (blIsSuccess == false) //If backing up failes, show error message to user. --> to add in next update: find way to add devicnename where te failure occured.
                 {
-                    MessageBox.Show("ERROR while downloading log files from FROST device: " + txtDeviceName.Text);
+                    MessageBox.Show("ERROR while downloading log files from FROST device: " + device.getDeviceName().ToString());
                     return;
                 }
             }
@@ -162,12 +162,13 @@ namespace FROST_configManager
 
         private void btnConfirmTableDeletion_Click(object sender, EventArgs e)
         {
+            bool blIsSuccess = false;
             if (checkBox_TableDeletionConfirmation.Checked == true)
             {
                 foreach (SCPconnectionManager device in SCPcList) //loop for all selected devices.
                 {
-                    bool blRetVal = device.removeDeviceTableFromDatabase();
-                    if (blRetVal == false)
+                    blIsSuccess = device.removeDeviceTableFromDatabase();
+                    if (blIsSuccess == false)
                         MessageBox.Show("Error removing table for: " + device.getDeviceName().ToString());
                 }
             }
@@ -257,7 +258,11 @@ namespace FROST_configManager
             {
                 progressBar_DiskUsage.Value = Convert.ToInt32(diskUsageArr[4].TrimEnd('%'));
                 lblDiskUsage.Text += "\nTotal diskspace: " + diskUsageArr[1] + "\nUsed diskspace: " + diskUsageArr[2] + "\nAvailable diskspace: " + diskUsageArr[3];
-            } //else: warning using messagebox is normaly catched inside the scp class.
+            }
+            else
+            {
+                MessageBox.Show("Error loading diskspace: " + diskUsageArr[0] + " | " + diskUsageArr[1]); //Returns error inside the diskUsageArr. See SCPconnectionManager class for more information.
+            }
 
 
             //add here more configs to load...
