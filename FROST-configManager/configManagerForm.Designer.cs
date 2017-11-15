@@ -40,10 +40,14 @@
             this.btnCreateBackupOfLogFiles = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblDiskUsage = new System.Windows.Forms.Label();
+            this.progressBar_DiskUsage = new System.Windows.Forms.ProgressBar();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtTempRangeMax = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.txtTempRangeMin = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.txtTempRangeMin = new System.Windows.Forms.TextBox();
             this.tabEmail = new System.Windows.Forms.TabPage();
             this.label20 = new System.Windows.Forms.Label();
             this.txtNewEmailAdress = new System.Windows.Forms.TextBox();
@@ -88,16 +92,17 @@
             this.txtMySqlServerIP = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.checkBox_DisableMySQL = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lblDiskUsage = new System.Windows.Forms.Label();
-            this.progressBar_DiskUsage = new System.Windows.Forms.ProgressBar();
+            this.btnConfirmTableDeletion = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.checkBox_TableDeletionConfirmation = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabEmail.SuspendLayout();
             this.tabUsers.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -107,8 +112,6 @@
             this.tabMySQL.SuspendLayout();
             this.groupBoxMySQLConfig.SuspendLayout();
             this.panel_MySqlServerSettingsInputs.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
@@ -236,6 +239,52 @@
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lblDiskUsage);
+            this.groupBox3.Controls.Add(this.progressBar_DiskUsage);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.richTextBox_DeviceInformation);
+            this.groupBox3.Location = new System.Drawing.Point(9, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(606, 207);
+            this.groupBox3.TabIndex = 15;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "General Information:";
+            // 
+            // lblDiskUsage
+            // 
+            this.lblDiskUsage.AutoSize = true;
+            this.lblDiskUsage.Location = new System.Drawing.Point(347, 32);
+            this.lblDiskUsage.Name = "lblDiskUsage";
+            this.lblDiskUsage.Size = new System.Drawing.Size(63, 13);
+            this.lblDiskUsage.TabIndex = 15;
+            this.lblDiskUsage.Text = "Disk usage:";
+            // 
+            // progressBar_DiskUsage
+            // 
+            this.progressBar_DiskUsage.Location = new System.Drawing.Point(488, 45);
+            this.progressBar_DiskUsage.Name = "progressBar_DiskUsage";
+            this.progressBar_DiskUsage.Size = new System.Drawing.Size(112, 23);
+            this.progressBar_DiskUsage.TabIndex = 14;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtMeasurmentInterval);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.txtTempRangeMax);
+            this.groupBox2.Controls.Add(this.txtDeviceName);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.txtTempRangeMin);
+            this.groupBox2.Location = new System.Drawing.Point(9, 219);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(606, 167);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "General settings:";
+            // 
             // txtTempRangeMax
             // 
             this.txtTempRangeMax.Location = new System.Drawing.Point(178, 123);
@@ -252,13 +301,6 @@
             this.label19.TabIndex = 10;
             this.label19.Text = "Maximum allowed temperature:";
             // 
-            // txtTempRangeMin
-            // 
-            this.txtTempRangeMin.Location = new System.Drawing.Point(178, 95);
-            this.txtTempRangeMin.Name = "txtTempRangeMin";
-            this.txtTempRangeMin.Size = new System.Drawing.Size(174, 20);
-            this.txtTempRangeMin.TabIndex = 9;
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -267,6 +309,13 @@
             this.label18.Size = new System.Drawing.Size(149, 13);
             this.label18.TabIndex = 8;
             this.label18.Text = "Minimum allowed temperature:";
+            // 
+            // txtTempRangeMin
+            // 
+            this.txtTempRangeMin.Location = new System.Drawing.Point(178, 95);
+            this.txtTempRangeMin.Name = "txtTempRangeMin";
+            this.txtTempRangeMin.Size = new System.Drawing.Size(174, 20);
+            this.txtTempRangeMin.TabIndex = 9;
             // 
             // tabEmail
             // 
@@ -565,11 +614,14 @@
             // 
             // groupBoxMySQLConfig
             // 
+            this.groupBoxMySQLConfig.Controls.Add(this.checkBox_TableDeletionConfirmation);
+            this.groupBoxMySQLConfig.Controls.Add(this.label21);
+            this.groupBoxMySQLConfig.Controls.Add(this.btnConfirmTableDeletion);
             this.groupBoxMySQLConfig.Controls.Add(this.panel_MySqlServerSettingsInputs);
             this.groupBoxMySQLConfig.Controls.Add(this.checkBox_DisableMySQL);
             this.groupBoxMySQLConfig.Location = new System.Drawing.Point(12, 15);
             this.groupBoxMySQLConfig.Name = "groupBoxMySQLConfig";
-            this.groupBoxMySQLConfig.Size = new System.Drawing.Size(469, 369);
+            this.groupBoxMySQLConfig.Size = new System.Drawing.Size(469, 332);
             this.groupBoxMySQLConfig.TabIndex = 1;
             this.groupBoxMySQLConfig.TabStop = false;
             this.groupBoxMySQLConfig.Text = "MySql configuration:";
@@ -696,51 +748,35 @@
             this.checkBox_DisableMySQL.UseVisualStyleBackColor = true;
             this.checkBox_DisableMySQL.CheckedChanged += new System.EventHandler(this.checkBox_DisableMySQL_CheckedChanged);
             // 
-            // groupBox2
+            // btnConfirmTableDeletion
             // 
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txtMeasurmentInterval);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.txtTempRangeMax);
-            this.groupBox2.Controls.Add(this.txtDeviceName);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.txtTempRangeMin);
-            this.groupBox2.Location = new System.Drawing.Point(9, 219);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(606, 167);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "General settings:";
+            this.btnConfirmTableDeletion.Location = new System.Drawing.Point(290, 275);
+            this.btnConfirmTableDeletion.Name = "btnConfirmTableDeletion";
+            this.btnConfirmTableDeletion.Size = new System.Drawing.Size(155, 23);
+            this.btnConfirmTableDeletion.TabIndex = 3;
+            this.btnConfirmTableDeletion.Text = "Confirm deletion of this table.";
+            this.btnConfirmTableDeletion.UseVisualStyleBackColor = true;
+            this.btnConfirmTableDeletion.Click += new System.EventHandler(this.btnConfirmTableDeletion_Click);
             // 
-            // groupBox3
+            // label21
             // 
-            this.groupBox3.Controls.Add(this.lblDiskUsage);
-            this.groupBox3.Controls.Add(this.progressBar_DiskUsage);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.richTextBox_DeviceInformation);
-            this.groupBox3.Location = new System.Drawing.Point(9, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(606, 207);
-            this.groupBox3.TabIndex = 15;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "General Information:";
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(23, 259);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(378, 13);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "Remove existing table from database (This wil remove all data inside this table):" +
+    "";
             // 
-            // lblDiskUsage
+            // checkBox_TableDeletionConfirmation
             // 
-            this.lblDiskUsage.AutoSize = true;
-            this.lblDiskUsage.Location = new System.Drawing.Point(347, 32);
-            this.lblDiskUsage.Name = "lblDiskUsage";
-            this.lblDiskUsage.Size = new System.Drawing.Size(63, 13);
-            this.lblDiskUsage.TabIndex = 15;
-            this.lblDiskUsage.Text = "Disk usage:";
-            // 
-            // progressBar_DiskUsage
-            // 
-            this.progressBar_DiskUsage.Location = new System.Drawing.Point(488, 45);
-            this.progressBar_DiskUsage.Name = "progressBar_DiskUsage";
-            this.progressBar_DiskUsage.Size = new System.Drawing.Size(112, 23);
-            this.progressBar_DiskUsage.TabIndex = 14;
+            this.checkBox_TableDeletionConfirmation.AutoSize = true;
+            this.checkBox_TableDeletionConfirmation.Location = new System.Drawing.Point(26, 279);
+            this.checkBox_TableDeletionConfirmation.Name = "checkBox_TableDeletionConfirmation";
+            this.checkBox_TableDeletionConfirmation.Size = new System.Drawing.Size(258, 17);
+            this.checkBox_TableDeletionConfirmation.TabIndex = 5;
+            this.checkBox_TableDeletionConfirmation.Text = "Yes, I am sure to remove all data inside this table.";
+            this.checkBox_TableDeletionConfirmation.UseVisualStyleBackColor = true;
             // 
             // configManagerForm
             // 
@@ -758,6 +794,10 @@
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabEmail.ResumeLayout(false);
             this.tabEmail.PerformLayout();
             this.tabUsers.ResumeLayout(false);
@@ -773,10 +813,6 @@
             this.groupBoxMySQLConfig.PerformLayout();
             this.panel_MySqlServerSettingsInputs.ResumeLayout(false);
             this.panel_MySqlServerSettingsInputs.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -847,5 +883,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lblDiskUsage;
         private System.Windows.Forms.ProgressBar progressBar_DiskUsage;
+        private System.Windows.Forms.Button btnConfirmTableDeletion;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.CheckBox checkBox_TableDeletionConfirmation;
     }
 }

@@ -160,6 +160,21 @@ namespace FROST_configManager
                 MessageBox.Show("Backup completed.");
         }
 
+        private void btnConfirmTableDeletion_Click(object sender, EventArgs e)
+        {
+            if (checkBox_TableDeletionConfirmation.Checked == true)
+            {
+                foreach (SCPconnectionManager device in SCPcList) //loop for all selected devices.
+                {
+                    bool blRetVal = device.removeDeviceTableFromDatabase();
+                    if (blRetVal == false)
+                        MessageBox.Show("Error removing table for: " + device.getDeviceName().ToString());
+                }
+            }
+            else
+                MessageBox.Show("Removal of all data inside the tables for ALL selected devices! Please check the confirm checkbox before pressing the button.");
+        }
+
         //=================================================================
         //=============Save and Load functions:============================
         //=================================================================
@@ -419,6 +434,5 @@ namespace FROST_configManager
                 return "Save completed.";
         }
 
-        
     }
 }

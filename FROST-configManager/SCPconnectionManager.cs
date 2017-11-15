@@ -329,5 +329,18 @@ namespace FROST_configManager
                 return errorstring;
             }
         }
+
+        public bool removeDeviceTableFromDatabase()
+        {
+            try
+            {
+                //get device name from file to use as foldername:
+                CommandExecutionResult strOut = s.ExecuteCommand("sh /home/FROST/scripts/mySQL_dropTable.sh");
+                return strOut.IsSuccess;
+            }catch(Exception)
+            {
+                return false;
+            }
+        }
     }
 }
