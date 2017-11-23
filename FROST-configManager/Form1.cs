@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Net.NetworkInformation;
+using System.Net.Sockets;
+using System.Net;
 
 namespace FROST_configManager
 {
@@ -51,10 +53,12 @@ namespace FROST_configManager
         //=============================================================================
         private void BW0_DoWork(object sender, DoWorkEventArgs e)
         {
+            string localIPpart = GetSubnetIPRange();
+
             for (int I = 1; I < progressBar1.Maximum; I++)
             {
                 autoDiscovery ad = new autoDiscovery();
-                PingReply pr = ad.sendPing("192.168.1." + I, 50);
+                PingReply pr = ad.sendPing(localIPpart + I, 50);
                 if (pr != null)
                 {
                     try
@@ -135,6 +139,35 @@ namespace FROST_configManager
                 configManagerForm cmf = new configManagerForm(listboxSelection, loginF.username, loginF.password);
                 cmf.ShowDialog();
             }
+        }
+
+        //Get local IP adress:
+        public static string GetSubnetIPRange()
+        {
+            //Try to get the local ip adress of this machine:
+            string localIP;
+            using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
+            {
+                socket.Connect("8.8.8.8", 65530);
+                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                localIP = endPoint.Address.ToString();
+            }
+
+            //If IP adress seems correct, remove the last number of it to create the following sytle: xxx.xxx.xxx.---
+            if(localIP.Contains('.') == true)
+            {
+                string[] ipBuffArr = localIP.Split('.');
+
+                localIP = "";
+                localIP += ipBuffArr[0] + "." ; 
+                localIP += ipBuffArr[1] + "." ;
+                //localIP += ipBuffArr[2] + "." ;
+                localIP += "8.";
+            }
+
+            Console.WriteLine("The local IP adress is: " + localIP);
+
+            return localIP;
         }
     }
 }
